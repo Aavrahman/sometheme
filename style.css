@@ -1,0 +1,110 @@
+/*
+Theme name: un theme
+Version: 0.1
+Author: ad inigh d Nekk
+Description: thème Un theme par Nekk
+The URI: https://...
+*/
+
+header, footer {
+    background-color: olive;
+    color: #ffffff;
+    height: 15%;
+    padding: 0.5rem;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    color: #333;
+    width: 1400px;
+    margin: auto;
+}
+
+header,
+footer {
+    padding: 1rem;
+}
+
+footer {
+    margin-top: .5rem;
+}
+
+.menu,
+footer p {
+    padding: 0;
+    width: 95%;
+}
+
+footer p {
+    margin-left: 2rem;
+}
+
+#hdr_menu_id ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.menu .page_item, .menu .menu-item {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 2rem;
+}
+/*****************/
+
+main {
+    margin-top: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+/*    width: 100%;  */
+    display: flex;
+    background-color: lightyellow;
+}
+/* --- */
+
+section {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.articles {
+    width: 25%;
+}
+
+.articles p, .articles a {
+    width: 96%;
+}
+
+.articles a {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(48, 48, 255);
+}
+
+.a-read {
+    font-weight: bolder;
+}
+
+.articles a:visited {
+    color: rgb(67, 29, 100);
+}
+
+ article {
+    width: 100%;
+    margin-bottom: 1.1rem;
+}
+
+aside {
+    width: 25%;
+    background-color: rgb(255, 206, 210);
+}
+
+/**************/
+
+.wp-post-image {
+    width: 100%;
+    height: 170px;
+/*    height: 100%; */
+}
