@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
-<h1><?php bloginfo('name'); ?> </h1>
+<main>
+    <h1><?php bloginfo('name'); ?> </h1>
 
 
-
+</main>
 <?php get_footer(); ?>
