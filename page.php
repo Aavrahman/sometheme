@@ -1,15 +1,11 @@
 <?php get_header() ?>
 
 <main>
-    <section>
-        <?php while (have_posts()): the_post(); ?>
-            <article>
-                <h1> <?php the_title() ?> </h1>
-                <?php the_post_thumbnail('medium'); ?>
-                <?php the_content() ?>
-            </article>
-        <?php endwhile; ?>
-    </section>
+
+    <h1>page.php</h1>
+
+    <?php get_template_part('includes/section', 'content'); ?>
+
 
     <?php // if(is_active_sidebar("articles")): ?>
     <aside> <?php // get_sidebar(); ?>

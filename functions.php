@@ -1,9 +1,7 @@
 <?php
 /* Gestion des images mises en avant
 add_theme_support("post-thumbnails");
-
-/* SETUP THUMBNAILS SIZE ? 
-set_post_thumbnail_size(450, 300, true);
+set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
 ////////////////////////////////////////////////////////////// */
 
 // ENREGISTRER MENU  
@@ -23,20 +21,19 @@ if (! function_exists('setup')):
     }
 endif;
 
-/*
+/*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
 function the_styles()  {
     wp_enqueue_style('init', get_stylesheet_uri());
-}
-*/
+}   */
 
 function load_css() {
-    // wp_register_style('bootstrap', '/css/bootstrap.min.css');
-    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all' );
+    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all' ); // 'false' for version
     wp_enqueue_style('bootstrap');
 } 
 add_action('wp_enqueue_scripts', 'load_css');
 
 function load_js() {
+    wp_enqueue_script('jquery');
     wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', false, true);
     wp_enqueue_style('bootstrap');
 }
