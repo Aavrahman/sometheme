@@ -5,21 +5,47 @@ set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
 ////////////////////////////////////////////////////////////// */
 
 // ENREGISTRER MENU  
-function enregistrer_menus()
-{
-    register_nav_menu('menu_principal', 'Menu principal' ); // register_nav_menu('menu_principal', __('Menu principal') ); 
-    register_nav_menu('the_footer_menu', 'The Footer' ); //    register_nav_menu('the_footer_menu', __('The Footer') );
-    register_nav_menu('404', '404' );
-}
+/*
+function enregistrer_menus() {
+  //  register_nav_menu('menu_principal', 'Menu principal' ); // register_nav_menu('menu_principal', __('Menu principal') ); 
+  //  register_nav_menu('the_footer_menu', 'The Footer' );    // register_nav_menu('the_footer_menu', __('The Footer') );
+  //  register_nav_menu('404', '404' );
+} */
 //add_action('init', 'enregistrer_menus');
+
+add_theme_support('menus');
+
+register_nav_menus(
+    array(
+        'menu_principal' => 'Menu principal',
+        'the_footer_menu' => 'The Footer',
+        '404' => 'Error messages '
+    )
+);
 
 if (! function_exists('setup')):
     function setup() {
-        enregistrer_menus();
+      //enregistrer_menus();
         add_theme_support('post-thumbnails');
         add_image_size('une-image', 200, 150, array('center', 'center'));
     }
 endif;
+
+function scripts_footer()
+{
+    //    wp_enqueue_script('init', get_template_directory_uri().'/js/init.js', array('jquery'));
+}
+
+add_action('after_setup_theme', 'setup');
+// add_action('wp_enqueue_scripts', 'the_styles');
+add_action('wp_footer', 'scripts_footer');
+
+
+
+/***************************************************************************** */
+
+
+// ADD CSS AND JS
 
 /*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
 function the_styles()  {
@@ -29,7 +55,10 @@ function the_styles()  {
 function load_css() {
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all' ); // 'false' for version
     wp_enqueue_style('bootstrap');
-} 
+
+    wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), false, 'all');
+    wp_enqueue_style('main'); // Override the bootsrap rules
+}
 add_action('wp_enqueue_scripts', 'load_css');
 
 function load_js() {
@@ -38,17 +67,9 @@ function load_js() {
     wp_enqueue_style('bootstrap');
 }
 add_action('wp_enqueue_scripts', 'load_js');
+/***************************************************************************** */
 
 
-function scripts_footer() {
-//    wp_enqueue_script('init', get_template_directory_uri().'/js/init.js', array('jquery'));
-}
-
-add_action('after_setup_theme', 'setup');
-// add_action('wp_enqueue_scripts', 'the_styles');
-add_action('wp_footer', 'scripts_footer');
-
-/////////////////
 // Widgets
 register_sidebar(array(
     'name' => 'Sidebar Articles',

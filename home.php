@@ -1,39 +1,46 @@
-<?php get_header() ?>
+    <?php get_header() ?>
 
-<h1> <?php bloginfo("name"); ?> home.php </h1>
+    <h1> <?php bloginfo("name"); ?> </h1>
 
-<main>
-    <section>
-    <?php 
-    if (have_posts()):
-        while (have_posts()) : the_post();
-    ?>
+    <h2> home.php</h2>
 
-        <article class="articles">
-            <a href="<?php the_permalink() ?>">
-                <?php the_post_thumbnail("medium") ?>
-                <h2> <?php the_title() ?> </h2>
-            </a>
+    <main>
+        <section class="page-wrap">
+            <div class="container">
 
-            <?php the_excerpt() ?>
+                <?php
+                    if (have_posts()):
+                        while (have_posts()) : the_post();
+                ?>
 
-            <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
-        </article>
+                <article class="articles">
+                    <a href="<?php the_permalink() ?>">
+                                    <?php the_post_thumbnail("medium") ?>
+                                    <h2> <?php the_title() ?> </h2>
+                    </a>
 
-    <?php
-        endwhile;
-    endif;
-    ?>
+                    <h6> <?php the_category(); ?> </h6>
 
-    </section>
+                    <?php the_excerpt() ?>
 
-    <?php // if(is_active_sidebar("articles")): ?>
-    <aside>
-        <?php //widget_1(); ?>
-        <?php dynamic_sidebar("articles"); ?>
-    </aside>
-    <?php // endif; ?>
+                    <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
+                </article>
 
-</main>
+                <?php
+                    endwhile;
+                endif;
+                ?>
 
-<?php get_footer(); ?>
+            </div>
+        </section>
+
+        <?php // if(is_active_sidebar("articles")): ?>
+        <aside>
+            <?php //widget_1(); ?>
+            <?php dynamic_sidebar("articles"); ?>
+        </aside>
+        <?php // endif; ?>
+
+    </main>
+
+    <?php get_footer(); ?>

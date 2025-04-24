@@ -1,17 +1,24 @@
-<?php get_header() ?>
+    <?php get_header() ?>
 
-<main>
+    <main>
+        <section class="page-wrap">
+            <div class="container">
 
-    <h1>page.php</h1>
+                <h1>page.php</h1>
 
-    <?php get_template_part('includes/section', 'content'); ?>
+                <?php get_template_part('includes/section', 'content'); ?>
 
+                <?php // if(is_active_sidebar("articles")): ?>
 
-    <?php // if(is_active_sidebar("articles")): ?>
-    <aside> <?php // get_sidebar(); ?>
-        <?php dynamic_sidebar("articles"); ?>
-    </aside>
-    <?php // endif;     ?>
-</main>
+                <aside>
+                    <?php // get_sidebar(); ?>
+                    <?php dynamic_sidebar("articles"); ?>
+                </aside>
 
-<?php get_footer() ?>
+                <?php // endif; ?>
+
+            </div>
+        </section>
+    </main>
+
+    <?php get_footer() ?>

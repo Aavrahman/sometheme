@@ -6,12 +6,6 @@ Description: thème Un theme par Nekk
 The URI: https://...
 */
 
-header, footer {
-    background-color: olive;
-    color: #ffffff;
-    height: 15%;
-    padding: 0.5rem;
-}
 
 body {
     font-family: 'Arial', sans-serif;
@@ -21,14 +15,6 @@ body {
     margin: auto;
 }
 
-header,
-footer {
-    padding: 1rem;
-}
-
-footer {
-    margin-top: .5rem;
-}
 
 .menu,
 footer p {
@@ -40,16 +26,6 @@ footer p {
     margin-left: 2rem;
 }
 
-#hdr_menu_id ul {
-    margin-left: 0;
-    padding-left: 0;
-}
-
-.menu .page_item, .menu .menu-item {
-    list-style-type: none;
-    display: inline-block;
-    margin-left: 2rem;
-}
 /*****************/
 
 main {

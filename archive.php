@@ -1,8 +1,13 @@
-<?php get_header(); ?>
+    <?php get_header(); ?>
 
-<main>
-    <h1><?php bloginfo('name'); ?> </h1>
+    <main>
+        <section class="page-wrap">
+            <div class="container">
 
+                <h1><?php bloginfo('name'); ?> </h1>
 
-</main>
-<?php get_footer(); ?>
+            </div>
+        </section>
+    </main>
+
+    <?php get_footer(); ?>

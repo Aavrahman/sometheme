@@ -1,18 +1,22 @@
-<?php get_header() ?>
+    <?php get_header() ?>
 
-<main>
+    <main>
+        <section class="page-wrap">
+            <div class="container">
 
-    <h1>single.php</h1>
+                <h1>single.php</h1>
 
-    <?php get_template_part('includes/section', 'content'); ?>
+                <?php get_template_part('includes/section', 'content'); ?>
 
+                <?php // if(is_active_sidebar("articles")): ?>
+                <aside>
+                    <?php // get_sidebar(); ?>
+                    <?php dynamic_sidebar("articles"); ?>
+                </aside>
+                <?php // endif; ?>
 
-    <?php // if(is_active_sidebar("articles")): ?>
-    <aside>
-        <?php // get_sidebar(); ?>
-        <?php dynamic_sidebar("articles"); ?>
-    </aside>
-    <?php // endif; ?>
-</main>
+            </div>
+        </section>
+    </main>
 
-<?php get_footer() ?>
+    <?php get_footer() ?>
