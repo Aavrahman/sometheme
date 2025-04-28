@@ -1,6 +1,4 @@
-    <?php get_header() ?>
-
-    <h1> <?php bloginfo("name"); ?> </h1>
+    <?php get_header(); ?>
 
     <h2> home.php</h2>
 

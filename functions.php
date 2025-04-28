@@ -19,6 +19,7 @@ register_nav_menus(
     array(
         'menu_principal' => 'Menu principal',
         'the_footer_menu' => 'The Footer',
+        'mobile_menu' => 'The mobile menu',
         '404' => 'Error messages '
     )
 );
@@ -40,10 +41,7 @@ add_action('after_setup_theme', 'setup');
 // add_action('wp_enqueue_scripts', 'the_styles');
 add_action('wp_footer', 'scripts_footer');
 
-
-
 /***************************************************************************** */
-
 
 // ADD CSS AND JS
 

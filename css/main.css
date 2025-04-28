@@ -11,27 +11,26 @@ footer {
     padding: 2rem 0;
 }
 
-.top-menu ul, .bottom-menu {
+.menu {
     display: flex;
 }
 
 .menu li {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-#hdr_menu_id a,
-#ftr_menu_id a {
-    padding: 0 1rem;
+.menu li a {
+    padding: 0.5rem;
     color: #FFFFFF;
     text-decoration: none;
 }
 
-#hdr_menu_id li:first-child a,
-#ftr_menu_id li:first-child a {
+.menu li:first-child a {
     padding-left: 0;
 }
 
-#hdr_menu_id li:first-child a,
-#ftr_menu_id li:first-child a {
+.menu li:last-child a {
     padding-right: 0;
 }
