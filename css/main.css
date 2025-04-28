@@ -1,6 +1,6 @@
 header,
 footer {
-    background-color: rgb(83, 83, 37);
+    background-color: rgb(69, 59, 255);
     width: 100%;
     height: 100px;
     color: #ffffff;/*
@@ -8,30 +8,51 @@ footer {
 }
 
 .page-wrap {
-    padding: 2rem 0;
+    padding: 1.2rem 0;
 }
 
-.top-menu ul, .bottom-menu {
+.container,
+.menu-menu-principal-container,
+.menu,
+.menu-item,
+.menu-item a {
+    height: 100%;
+}
+
+#menu-menu-principal,
+#menu-the-footer {
+    padding-left: 0;
+}
+
+.menu {
     display: flex;
+    justify-content: right;
 }
 
-.menu li {
+.menu .menu-item {
     list-style-type: none;
+    align-content: center;
 }
 
-#hdr_menu_id a,
-#ftr_menu_id a {
+/* *** HIDE / DISPLAY SUB-MENU *** */
+li.menu-item-has-children .sub-menu {
+    display: none;
+}
+
+li.menu-item-has-children:hover .sub-menu {
+    display: flex;
+    flex-direction: column;
+}
+/* *** */
+
+.menu a {
     padding: 0 1rem;
     color: #FFFFFF;
     text-decoration: none;
 }
 
-#hdr_menu_id li:first-child a,
-#ftr_menu_id li:first-child a {
-    padding-left: 0;
-}
-
-#hdr_menu_id li:first-child a,
-#ftr_menu_id li:first-child a {
+.menu li:first-child a,
+.menu li:last-child a {
     padding-right: 0;
+    padding-left: 0;
 }
