@@ -1,4 +1,4 @@
-    <?php get_header("customized"); ?>
+    <?php get_header(); ?>
 
     <main>
         <section class="page-wrap">

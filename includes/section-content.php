@@ -1,31 +1,23 @@
         <section class="page-wrap">
             <div class="container">
-                <a href="<?php the_permalink(); ?>">
+
+        <?php
+            if ( have_posts() ):
+                while (have_posts()):
+                    the_post();
+        ?>
+                <article>
                     <h1> <?php the_title(); ?> </h1>
                     <?php the_post_thumbnail('medium'); ?>
-                </a>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <?php
-                        if (have_posts()):
-                            while (have_posts()):
-                                the_post();
-                        ?>
-
-                                <?php the_content(); ?>
-
-                                <p> Some stuff </p>
-
-                        <?php
-                            endwhile;
-                        else:
-                        endif;
-                        ?>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <p>Some other stuff !</p>
-                    </div>
-                </div>
-            </div> <!-- end of div class='row' -->
+                    <?php the_content() ?>
+                </article>
+        <?php
+                endwhile;
+            else:
+        ?>
+                <p> Il n'y a pas d'articles </p>
+        <?php
+            endif;
+        ?>
+            </div>
         </section>

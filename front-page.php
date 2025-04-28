@@ -1,44 +1,26 @@
-    <?php get_header() ?>
-
-    <h2> home.php</h2>
+    <?php get_header(); ?>
 
     <main>
         <section class="page-wrap">
             <div class="container">
 
-                <?php
-                if (have_posts()):
-                    while (have_posts()) : the_post();
-                ?>
+                <h1>Front-page.php</h1>
 
-                        <article class="articles">
-                            <a href="<?php the_permalink() ?>">
-                                <?php the_post_thumbnail("medium") ?>
-                                <h2> <?php the_title() ?> </h2>
-                            </a>
+                <?php get_template_part('includes/section', 'content'); ?>
 
-                            <h6> <?php the_category(); ?> </h6>
-
-                            <?php the_excerpt() ?>
-
-                            <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
-                        </article>
-
-                <?php
-                    endwhile;
-                endif;
-                ?>
+                <?php // if(is_active_sidebar("articles")): ?>
+                    <aside>
+                        <?php 
+                        // get_sidebar(); 
+                        ?>
+                        <?php 
+                            dynamic_sidebar("articles");
+                        ?>
+                    </aside>
+                <?php // endif; ?>
 
             </div>
         </section>
-
-        <?php // if(is_active_sidebar("articles")): ?>
-        <aside>
-            <?php //widget_1(); ?>
-            <?php dynamic_sidebar("articles"); ?>
-        </aside>
-        <?php // endif; ?>
-
     </main>
 
     <?php get_footer(); ?>

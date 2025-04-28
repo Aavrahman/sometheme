@@ -1,8 +1,9 @@
 <?php
 /*
-Template Name: Ghef tiwura
+Template Name: Kontakt
 */
 ?>
+
 
     <?php get_header(); ?>
 
@@ -10,20 +11,19 @@ Template Name: Ghef tiwura
         <section class="page-wrap">
             <div class="container">
 
+                Template n Kontakt
+
                 <div class="row">
                     <div clas="col-lg-6">
-                        <h>about-us.php</h1>
-                        <p>A gauche</p>
+                        <h1>about-us.php.php</h1>
                     </div>
                     <div clas="col-lg-6">
-                        <h>about-us.php</h1>
-                        <p>A droite</p>
-                        <?php get_template_part('includes/section', 'content'); ?>
+                        <p>Ghef Tiwura template</p>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </section>    
     </main>
 
     <?php get_footer(); ?>

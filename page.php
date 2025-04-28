@@ -1,4 +1,4 @@
-    <?php get_header("customized"); ?>
+    <?php get_header() ?>
 
     <main>
         <section class="page-wrap">
@@ -9,10 +9,12 @@
                 <?php get_template_part('includes/section', 'content'); ?>
 
                 <?php // if(is_active_sidebar("articles")): ?>
+
                 <aside>
                     <?php // get_sidebar(); ?>
                     <?php dynamic_sidebar("articles"); ?>
                 </aside>
+
                 <?php // endif; ?>
 
             </div>
