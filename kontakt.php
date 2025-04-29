@@ -5,11 +5,12 @@ Template Name: Kontakt
 ?>
 
 
-    <?php get_header(); ?>
+<?php get_header(); ?>
 
-    <main>
-        <section class="page-wrap">
-            <div class="container">
+<main>
+    <section class="page-wrap">
+        <div class="container">
+            <div class="container__section">
 
                 Template n Kontakt
 
@@ -23,7 +24,8 @@ Template Name: Kontakt
                 </div>
 
             </div>
-        </section>    
-    </main>
+        </div>
+    </section>
+</main>
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>
