@@ -102,7 +102,7 @@ register_sidebar(array(
 ));
 
 // OR
-/*
+
 function widget_1() {
     register_sidebar( array(
         'name'      => 'Sidebar',
@@ -114,4 +114,4 @@ function widget_1() {
         'after_title'   => '</h2>',
     ));
 }
-add_action('widgets_init', 'widget_1');         */
+add_action('widgets_init', 'widget_1');
