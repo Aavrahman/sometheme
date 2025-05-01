@@ -4,7 +4,8 @@
         <section class="page-wrap">
             <div class="container">
 
-                <h1><?php bloginfo('name'); ?> </h1>
+                <p> We are in 'blog' catégory. It displays the 'blog' category affiliated content. it uses the 'archive.php' template. </p>
+                <?php get_template_part('includes/section', 'content'); ?>
 
             </div>
         </section>
