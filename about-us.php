@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Ghef tiwura
+Template Name: About
 */
 ?>
 
@@ -13,11 +13,11 @@ Template Name: Ghef tiwura
 
                 <div class="row">
                     <div clas="col-lg-6">
-                        <h>about-us.php</h1>
+                        <h1>about-us.php</h1>
                             <p>A gauche</p>
                     </div>
                     <div clas="col-lg-6">
-                        <h>about-us.php</h1>
+                        <h1>about-us.php</h1>
                             <p>A droite</p>
                             <?php get_template_part('includes/section', 'content'); ?>
                     </div>

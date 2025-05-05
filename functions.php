@@ -19,7 +19,8 @@ register_nav_menus(
     array(
         'menu_principal' => 'Menu principal',
         'the_footer_menu' => 'The Footer',
-        '404' => 'Error messages '
+        '404' => 'Error messages',
+        'about_us' => 'About us' 
     )
 );
 
