@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header("about"); ?>
 
 <main>
     <section class="page-wrap">
