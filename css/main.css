@@ -62,3 +62,14 @@ footer {
     text-decoration: none;
 }
 /* *** */
+
+/* *** REFACTORING BOOTSTRAP *** */
+.badge-secondary {
+    color: white;
+    background-color: blue;
+}
+
+.badge-primary {
+    color: white;
+    background-color: green;
+}

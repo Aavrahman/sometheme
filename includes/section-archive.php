@@ -1,6 +1,6 @@
             <div class="container__section">
 
-                <h4>Archive template</h4>
+                <h4>section-archive template</h4>
                 <?php
                 if (have_posts()):
                     while (have_posts()):
@@ -8,7 +8,7 @@
                 ?>
                         <article class="card mb=3">
                             <div class="card-body">
-                                <h2> <?php the_title(); ?> </h2>
+                                <h2> <?php echo the_title(); ?> </h2>
                                 <?php the_post_thumbnail('medium'); ?>
                                 <?php the_excerpt(); ?>
                                 <a href="<?php the_permalink(); ?>" class="btn btn-success"> Gher artikl </a>

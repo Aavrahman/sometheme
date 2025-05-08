@@ -19,7 +19,7 @@ Template Name: About
                     <div clas="col-lg-6">
                         <h1>about-us.php</h1>
                             <p>A droite</p>
-                            <?php get_template_part('includes/section', 'content'); ?>
+                            <?php get_template_part('includes/section', 'pages'); ?>
                     </div>
                 </div>
 
