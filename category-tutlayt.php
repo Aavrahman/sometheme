@@ -8,10 +8,8 @@
 
             <?php get_template_part('includes/section', 'archive'); ?>
 
-            <?php previous_posts_link(); // Added in'section-archive.php' template part 
-            ?>
-            <?php next_posts_link(); // Added in'section-archive.php' template part 
-            ?>
+            <?php previous_posts_link(); // Added in'section-archive.php' template part ?>
+            <?php next_posts_link(); // Added in'section-archive.php' template part ?>
 
             <!-- OR: the code down -->
             <?php /*

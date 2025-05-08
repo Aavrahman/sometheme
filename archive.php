@@ -4,7 +4,7 @@
         <section class="page-wrap">
             <div class="container">
 
-                <h1> Nnom de la catégorie: <?php echo single_cat_title(); ?> </h1>    <!-- DISPLAYS THE TITLE OF THE CATEGORY -->
+                <h1> Nom de la catégorie: <?php echo single_cat_title(); ?> </h1>    <!-- DISPLAYS THE TITLE OF THE CATEGORY -->
 
                 <?php get_template_part('includes/section', 'archive'); ?>
 

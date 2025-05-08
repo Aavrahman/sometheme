@@ -1,46 +1,52 @@
     <?php get_header() ?>
 
-    <h1> <?php bloginfo("name"); ?> </h1>
-
-    <h2> home.php</h2>
-
     <main>
         <section class="page-wrap">
             <div class="container">
                 <div class="container__section">
 
-                <?php
+                    <h1> <?php bloginfo("name"); ?> </h1>
+
+                    <h2> home.php</h2>
+
+                    <?php
                     if (have_posts()):
                         while (have_posts()) : the_post();
-                ?>
+                    ?>
 
-                <article class="articles">
-                    <a href="<?php the_permalink() ?>">
+                            <article class="articles">
+                                <a href="<?php the_permalink() ?>">
                                     <?php the_post_thumbnail("medium") ?>
                                     <h2> <?php the_title() ?> </h2>
-                    </a>
+                                </a>
 
-                    <h6> <?php the_category(); ?> </h6>
+                                <h6> <?php the_category(); ?> </h6>
 
-                    <?php the_excerpt() ?>
+                                <?php the_excerpt() ?>
 
-                    <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
-                </article>
+                                <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
 
-                <?php
-                    endwhile;
-                endif;
-                ?>
+                            </article>
+
+                    <?php
+                        endwhile;
+                        previous_posts_link(); // Added in'section-archive.php' template part
+                        next_posts_link(); // Added in'section-archive.php' template part
+                    endif;
+                    ?>
                 </div>
             </div>
         </section>
 
-        <?php // if(is_active_sidebar("articles")): ?>
+        <?php // if(is_active_sidebar("articles")): 
+        ?>
         <aside>
-            <?php //widget_1(); ?>
+            <?php //widget_1(); 
+            ?>
             <?php dynamic_sidebar("articles"); ?>
         </aside>
-        <?php // endif; ?>
+        <?php // endif; 
+        ?>
 
     </main>
 
