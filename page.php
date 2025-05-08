@@ -6,7 +6,7 @@
 
                 <h1>page.php</h1>
 
-                <?php get_template_part('includes/section', 'content'); ?>
+                <?php get_template_part('includes/section', 'pages'); ?>
 
                 <?php // if(is_active_sidebar("articles")): ?>
 

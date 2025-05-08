@@ -10,7 +10,7 @@ Template Name: Kontakt
 <main>
     <section class="page-wrap">
         <div class="container">
-            <div class="container__section">
+            <div class="container_section">
 
                 Template n Kontakt
 
