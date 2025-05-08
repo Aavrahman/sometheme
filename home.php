@@ -34,6 +34,9 @@
                         next_posts_link(); // Added in'section-archive.php' template part
                     endif;
                     ?>
+
+
+                    <?php wp_link_pages(); ?>
                 </div>
             </div>
         </section>

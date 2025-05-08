@@ -8,6 +8,8 @@
 
                 <?php get_template_part('includes/section', 'content'); ?>
 
+                <?php wp_link_pages(); ?>
+
                 <?php // if(is_active_sidebar("articles")): ?>
                 <aside>
                     <?php // get_sidebar(); ?>

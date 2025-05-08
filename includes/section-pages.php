@@ -40,6 +40,9 @@
                             <?php
                             endforeach;
                             ?>
+                            <?php
+                                comments_template();
+                            ?>
                         </section>
                     <?php
                     endwhile;
