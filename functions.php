@@ -28,7 +28,9 @@ if (! function_exists('setup')):
     function setup() {
       //enregistrer_menus();
         add_theme_support('post-thumbnails');
-        add_image_size('une-image', 200, 150, array('center', 'center'));
+        add_image_size('small', 200, 150, array('center', 'center'));
+        add_image_size('medium', 600, 400, array('center', 'center'));
+        add_image_size('large', 1000, 750, array('center', 'center'));
     }
 endif;
 

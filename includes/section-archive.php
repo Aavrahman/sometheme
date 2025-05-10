@@ -9,7 +9,19 @@
                         <article class="card mb=3">
                             <div class="card-body">
                                 <h2> <?php echo the_title(); ?> </h2>
-                                <?php the_post_thumbnail('medium'); ?>
+
+                                <?php /*
+                                if (has_post_thumbnail()): 
+                                    the_post_thumbnail('medium');
+                                else: */
+                                ?>
+                                <!--    No image -->
+                                <?php // endif; 
+                                ?>
+
+                                <!-- OR SOMETHING LIKE THE CODE BELLOW -->
+                                <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+
                                 <?php the_excerpt(); ?>
                                 <a href="<?php the_permalink(); ?>" class="btn btn-success"> Gher artikl </a>
                             </div>
@@ -23,7 +35,9 @@
                 endif;
                 ?>
 
-                <?php // previous_posts_link(); ?>
-                <?php // next_posts_link(); ?>
+                <?php // previous_posts_link(); 
+                ?>
+                <?php // next_posts_link(); 
+                ?>
 
             </div>
