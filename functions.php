@@ -13,7 +13,6 @@ function enregistrer_menus() {
 } */
 //add_action('init', 'enregistrer_menus');
 
-add_theme_support('menus');
 
 register_nav_menus(
     array(
@@ -26,11 +25,12 @@ register_nav_menus(
 
 if (! function_exists('setup')):
     function setup() {
-      //enregistrer_menus();
+        //enregistrer_menus();
+        add_theme_support('menus');
         add_theme_support('post-thumbnails');
-        add_image_size('small', 200, 150, array('center', 'center'));
-        add_image_size('medium', 600, 400, array('center', 'center'));
-        add_image_size('large', 1000, 750, array('center', 'center'));
+        add_image_size('small', 200, 150, true);
+        add_image_size('medium', 600, 400, true);
+        add_image_size('large', 1000, 750, true);
     }
 endif;
 

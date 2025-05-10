@@ -13,14 +13,14 @@
                                 <?php /*
                                 if (has_post_thumbnail()): 
                                     the_post_thumbnail('medium');
-                                else: */
-                                ?>
+                                else: */                ?>
                                 <!--    No image -->
-                                <?php // endif; 
-                                ?>
+                                <?php // endif;         ?>
 
                                 <!-- OR SOMETHING LIKE THE CODE BELLOW -->
-                                <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+                                <?php endif; ?>
 
                                 <?php the_excerpt(); ?>
                                 <a href="<?php the_permalink(); ?>" class="btn btn-success"> Gher artikl </a>

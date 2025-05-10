@@ -16,7 +16,9 @@
                             <?php // endif; ?>
 
                             <!-- OR SOMETHING LIKE THE CODE BELLOW -->
-                            <img src="<?php the_post_thumbnail_url("large"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+                            <?php if (has_post_thumbnail()): ?>
+                                <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">                            
+                            <?php endif; ?>
 
                             <p> Iffghed ass n <?php echo get_the_date('d/m/Y h:i:s'); ?> </p>
 
