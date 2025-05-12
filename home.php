@@ -1,55 +1,58 @@
     <?php get_header() ?>
 
-    <main>
-        <section class="page-wrap">
-            <div class="container">
-                <div class="container__section">
+    <main class="container">
 
-                    <h1> <?php bloginfo("name"); ?> </h1>
+        <h1> <?php bloginfo("name"); ?> </h1>
 
-                    <h2> home.php</h2>
+        <h2>TEMPLATE: home.php</h2>
 
-                    <?php
-                    if (have_posts()):
-                        while (have_posts()) : the_post();
-                    ?>
+        <?php
+        if (have_posts()):
+            while (have_posts()) : the_post();
+        ?>
 
-                            <article class="articles">
-                                <a href="<?php the_permalink() ?>">
-                                    <?php the_post_thumbnail("medium") ?>
-                                    <h2> <?php the_title() ?> </h2>
-                                </a>
+        <article class="card mb=3">
+            <div class="card-body">
 
-                                <h6> <?php the_category(); ?> </h6>
+                <a href="<?php the_permalink() ?>">
+                    <h2> <?php the_title() ?> </h2>
+                </a>
 
-                                <?php the_excerpt() ?>
+                <section class="row">
+                    <?php if (has_post_thumbnail()): ?>
+                        <div class="col-lg-3">
+                            <a href="<?php the_permalink() ?>">
+                                <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+                            </a>
+                        </div>
+                    <?php endif; ?>
 
-                                <a class="read" href="<?php the_permalink() ?>"> Gher artikl ... </a>
+                    <div class="col-lg-9">
+                        <?php the_excerpt() ?>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-success"> Gher artikl </a>
+                        <h6> <?php the_category(); ?> </h6>
+                    </div>
+                </section>
 
-                            </article>
-
-                    <?php
-                        endwhile;
-                        previous_posts_link(); // Added in'section-archive.php' template part
-                        next_posts_link(); // Added in'section-archive.php' template part
-                    endif;
-                    ?>
-
-
-                    <?php wp_link_pages(); ?>
-                </div>
             </div>
-        </section>
+        </article>
 
-        <?php // if(is_active_sidebar("articles")): 
+        <?php
+            endwhile;
+            previous_posts_link(); // Added in'section-archive.php' template part
+            next_posts_link(); // Added in'section-archive.php' template part 
+        endif;
         ?>
-        <aside>
-            <?php //widget_1(); 
-            ?>
-            <?php dynamic_sidebar("articles"); ?>
-        </aside>
-        <?php // endif; 
-        ?>
+
+        <?php wp_link_pages(); ?>
+
+        <?php if (is_active_sidebar("articles")): ?>
+            <aside>
+                <?php dynamic_sidebar("articles"); ?>
+            </aside>
+        <?php else: ?>
+            <p>No sidebar available for this page / post !</p>
+        <?php endif; ?>
 
     </main>
 

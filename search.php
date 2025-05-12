@@ -1,15 +1,19 @@
     <?php get_header(); ?>
 
-    <main>
+    <main class="container">
         <section class="page-wrap">
-            <div class="container">
-                <div class="container__section">
+            <h1><?php bloginfo('name'); ?> </h1>
 
-                    <h1><?php bloginfo('name'); ?> </h1>
-
-                </div>
-            </div>
+            <?php if (is_active_sidebar("articles")): ?>
+            <aside>
+                <?php // get_sidebar(); ?>
+                <?php dynamic_sidebar("articles"); ?>
+            </aside>
+            <?php else: ?>
+            <p>No sidebar available for this page / post !</p>
+            <?php endif; ?>
         </section>
+
     </main>
 
     <?php get_footer(); ?>

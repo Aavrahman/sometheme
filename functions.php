@@ -27,7 +27,7 @@ if (! function_exists('setup')):
     function setup() {
         //enregistrer_menus();
         add_theme_support('menus');
-        Add_theme_support('widgets');
+    //  add_theme_support('widgets');
         add_theme_support('post-thumbnails');
         add_image_size('small', 200, 150, true);
         add_image_size('medium', 600, 400, true);
@@ -73,7 +73,56 @@ function load_js() {
 add_action('wp_enqueue_scripts', 'load_js');
 /***************************************************************************** */
 
+
 // Widgets
+
+add_theme_support('widgets');
+
+function my_sidebars() {
+    register_sidebar(array(
+        'name' => 'Articles Sidebar',
+        'id' => 'articles',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+        'description' => __('Widget latéral pour articles et pages', 'textdomain'),
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Pied de page 1',
+        'id' => 'pied1',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+        'description' => __('Widget 1 pour pied et page', 'textdomain'),
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Pied de page 2',
+        'id' => 'pied2',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+        'description' => __('Widget 2 pour pied et page', 'textdomain'),
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+    ));
+
+    register_sidebar(array(
+        'name'      => 'Sidebar',
+        'id' => 'sidebar',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+        'description' => __('Présenter un widget via une fonction', 'textdomain'),
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+    ));
+}
+add_action('widgets_init', 'my_sidebars');
+
+
+/* OR REACTIVATE THE add_theme_support("widgets") ABOVE IN 'setup()' FUNCTION? AND ADD CODE BELLOW
 register_sidebar(array(
     'name' => 'Sidebar Articles',
     'id' => 'articles',
@@ -103,18 +152,4 @@ register_sidebar(array(
     'before_title'  => '<h2>',
     'after_title'   => '</h2>',
 ));
-
-// OR
-
-function widget_1() {
-    register_sidebar( array(
-        'name'      => 'Sidebar',
-        'id' => 'sidebar',
-        'description' => __('Présenter un widget via une fonction', 'textdomain'),
-        'before_widget' => '<div>',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2>',
-        'after_title'   => '</h2>',
-    ));
-}
-add_action('widgets_init', 'widget_1');
+*/

@@ -7,25 +7,27 @@ Template Name: Kontakt
 
 <?php get_header(); ?>
 
-<main>
+<main class="container">
+
     <section class="page-wrap">
-        <div class="container">
-            <div class="container_section">
+        Template n Kontakt
+    </section>
 
-                Template n Kontakt
-
-                <div class="row">
-                    <div clas="col-lg-6">
-                        <h1>about-us.php.php</h1>
-                    </div>
-                    <div clas="col-lg-6">
-                        <p>Ghef Tiwura template</p>
-                    </div>
-                </div>
-
+    <?php if (is_active_sidebar("articles")): ?>
+        <div class="row">
+            <div clas="col-lg-6">
+                <h1>about-us.php.php</h1>
+                <?php dynamic_sidebar("articles"); ?>
+            </div>
+            <div clas="col-lg-6">
+                <h1p>Ghef Tiwura template</h1>
+                    <?php dynamic_sidebar("articles"); ?>
+            <?php else: ?>
+                <p>No sidebar available for this post / page !</p>
             </div>
         </div>
-    </section>
+    <?php endif; ?>
+
 </main>
 
 <?php get_footer(); ?>
