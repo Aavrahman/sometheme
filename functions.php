@@ -165,7 +165,7 @@ function cars_post_type() {
         'public' => true,
         'menu_icon' => 'dashicons-car', // Find an icon in google -> 'wordpress dashicons'
         'has_archive' => true,
-        'support' => array('title', 'editor', 'thumbnail'),
+        'support' => array('title', 'editor', 'comments', 'thumbnail'),
         'rewrite' => array('slug' => 'cars'),
     );
     register_post_type('cars', $args);
@@ -177,11 +177,11 @@ add_action('init', 'cars_post_type');
 function cars_taxonomy() {
     $args = array(  /*
         'labels' => array(          // Same as in cars_post_type() function
-            'name' => 'Modeles',    // To display in WP backend -- if 'labels commented, WPBackend displays 'Tags'/'Etiquettes'
+            'name' => 'Modeles',    // To display in WP backend -- if 'labels commented, WPBackend displays 'Tags'/'c   ategories' 
             'singular_name' => 'Modele',
         ),  */
         'public' => true,
-        'hierachical' => false,
+        'hierarchical' => false, //true -- True makes it for Categories, False for Tags 
     );
     register_taxonomy('Modeles', array('cars'), $args);  // array('cars') arg. refers to 'cars' of the register_post_type('cars', $args) function above
 }
