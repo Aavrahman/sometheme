@@ -121,7 +121,6 @@ function my_sidebars() {
 }
 add_action('widgets_init', 'my_sidebars');
 
-
 /* OR REACTIVATE THE add_theme_support("widgets") ABOVE IN 'setup()' FUNCTION? AND ADD CODE BELLOW
 register_sidebar(array(
     'name' => 'Sidebar Articles',
@@ -152,4 +151,38 @@ register_sidebar(array(
     'before_title'  => '<h2>',
     'after_title'   => '</h2>',
 ));
-*/
+/***************************************************************************** */
+
+// CUSTOM POST TYPES
+
+function cars_post_type() {
+    $args = array(
+        'labels' => array(
+            'name' => 'Cars',       // To display in WP backend
+            'singular_name' => 'Car',
+        ),
+        'hierarchical' => true,    // true makes it for 'pages', false or desactivated for 'articles'
+        'public' => true,
+        'menu_icon' => 'dashicons-car', // Find an icon in google -> 'wordpress dashicons'
+        'has_archive' => true,
+        'support' => array('title', 'editor', 'thumbnail'),
+        'rewrite' => array('slug' => 'cars'),
+    );
+    register_post_type('cars', $args);
+}
+add_action('init', 'cars_post_type');
+
+// TAXONOMY
+
+function cars_taxonomy() {
+    $args = array(  /*
+        'labels' => array(          // Same as in cars_post_type() function
+            'name' => 'Modeles',    // To display in WP backend -- if 'labels commented, WPBackend displays 'Tags'/'Etiquettes'
+            'singular_name' => 'Modele',
+        ),  */
+        'public' => true,
+        'hierachical' => false,
+    );
+    register_taxonomy('Modeles', array('cars'), $args);  // array('cars') arg. refers to 'cars' of the register_post_type('cars', $args) function above
+}
+add_action('init', 'cars_taxonomy');
