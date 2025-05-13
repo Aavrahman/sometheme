@@ -1,4 +1,4 @@
-    <?php get_header() ?>
+<?php get_header() ?>
 
     <h1> <?php bloginfo("name"); ?> </h1>
     <h2>index.php </h2>
@@ -29,7 +29,6 @@
         </section>
 
         <?php if (is_active_sidebar("articles")): ?>
-        <?php if(is_active_sidebar()): ?>
         <aside>
             <?php dynamic_sidebar("articles"); ?>
         </aside>
@@ -39,4 +38,4 @@
 
     </main>
 
-    <?php get_footer() ?>
+<?php get_footer(); ?>
