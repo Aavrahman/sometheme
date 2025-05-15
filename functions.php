@@ -29,7 +29,7 @@ if (! function_exists('setup')):
         add_theme_support('menus');
     //  add_theme_support('widgets');
         add_theme_support('post-thumbnails');
-        add_image_size('small', 200, 150, true);
+        add_image_size('small', 200, 150, true); // False = not hard cropped
         add_image_size('medium', 600, 400, true);
         add_image_size('large', 1000, 750, true);
     }
@@ -48,13 +48,12 @@ add_action('wp_footer', 'scripts_footer');
 
 /***************************************************************************** */
 
-
-// ADD CSS AND JS
-
 /*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
 function the_styles()  {
     wp_enqueue_style('init', get_stylesheet_uri());
 }   */
+
+// ADD CSS AND JS
 
 function load_css() {
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all' ); // 'false' for version
@@ -72,7 +71,6 @@ function load_js() {
 }
 add_action('wp_enqueue_scripts', 'load_js');
 /***************************************************************************** */
-
 
 // Widgets
 
@@ -108,81 +106,77 @@ function my_sidebars() {
         'before_widget' => '<div>',
         'after_widget'  => '</div>',
     ));
-
-    register_sidebar(array(
-        'name'      => 'Sidebar',
-        'id' => 'sidebar',
-        'before_title' => '<h4 class="widget-title">',
-        'after_title'   => '</h4>',
-        'description' => __('Présenter un widget via une fonction', 'textdomain'),
-        'before_widget' => '<div>',
-        'after_widget'  => '</div>',
-    ));
 }
 add_action('widgets_init', 'my_sidebars');
 
-/* OR REACTIVATE THE add_theme_support("widgets") ABOVE IN 'setup()' FUNCTION? AND ADD CODE BELLOW
-register_sidebar(array(
-    'name' => 'Sidebar Articles',
-    'id' => 'articles',
-    'description' => __('Widget latéral pour articles et pages', 'textdomain'),
-    'before_widget' => '<div>',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>',
-));
-
-register_sidebar(array(
-    'name' => 'Pied de page 1',
-    'id' => 'pied1',
-    'description' => __('Widget 1 pour pied et page', 'textdomain'),
-    'before_widget' => '<div>',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>',
-));
-
-register_sidebar(array(
-    'name' => 'Pied de page 2',
-    'id' => 'pied2',
-    'description' => __('Widget 2 pour pied et page', 'textdomain'),
-    'before_widget' => '<div>',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h2>',
-    'after_title'   => '</h2>',
-));
 /***************************************************************************** */
+
+// TAXONOMY
+
+function cars_taxonomy()
+{
+    $args = array(
+        'labels' => array(          // Same as in cars_post_type() function
+            'name' => 'Modele',    // To display in WP backend
+            'singular_name'    => 'Modele',
+            'plural_name'      => 'Modeles', // libellé affiché dans le menu
+            'search_items'     => 'Rechercher une Voiture',
+            'all_items'        => 'Toutes les voitures Vokswagen',
+            'edit_item'        => 'Editer la Voiture',
+            'update_item'      => 'Modifier la Voiture',
+            'add_new_item'     => 'Ajouter une nouvelle Volks',
+            'new_item_name'    => 'Ajouter une nouvelle voiture',
+            'menu_name'        => 'Une VW', /*
+            'not_found'        => 'Non trouvée',
+            'not_found_in_trash' => 'Non trouvée dans la corbeille',
+            'set_featured_image' => 'Set Featured_image',
+            'use_featured_image' => 'Use_featured_image',
+            'set_featured_image'    => 'Featured image',    */
+        ),  // if 'labels are commented, WPBackend will displays 'Tags' or 'categories'
+        'show_in_rest' => true,
+        'public' => true,
+        'hierarchical' => true, // True makes it for Categories, False for Tags
+        'show_admin_column' => true,
+    );
+    register_taxonomy('Modeles', array('cars'), $args);  // array('cars') arg. refers to 'cars' of the register_post_type('cars', $args) function above
+}
+add_action('init', 'cars_taxonomy');
 
 // CUSTOM POST TYPES
 
 function cars_post_type() {
     $args = array(
+        'label'               => 'Voitures VW',
         'labels' => array(
             'name' => 'Cars',       // To display in WP backend
             'singular_name' => 'Car',
+            'menu_name'       => 'Voitures', // libellé affiché dans le menu
+            'all_items'         => 'Toutes les voitures Vokswagen',
+            'view_item'        => 'Voir les séries de Voitures',
+            'add_new_item'     => 'Ajouter une nouvelle voiture Volkswagen',
+            'add_new'          => 'Ajouter',
+            'edit_item'        => 'Editer la Voiture',
+            'update_item'      => 'Modifier la Voiture',
+            'search_items'     => 'Rechercher une Voiture', /*
+            'not_found'        => 'Non trouvée',
+            'not_found_in_trash' => 'Non trouvée dans la corbeille',
+            'set_featured_image' => 'Set Featured_image',
+            'use_featured_image' => 'Use_featured_image',
+            'set_featured_image'    => 'Featured image',    */
+            'show_in_rest' => true,
         ),
-        'hierarchical' => true,    // true makes it for 'pages', false or desactivated for 'articles'
+        'hierarchical' => false,    // true makes it for 'pages', false or desactivated for 'articles'
         'public' => true,
+        'menu_postion' => 1,
         'menu_icon' => 'dashicons-car', // Find an icon in google -> 'wordpress dashicons'
         'has_archive' => true,
-        'support' => array('title', 'editor', 'comments', 'thumbnail'),
+        // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+        'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
         'rewrite' => array('slug' => 'cars'),
+
+        'description'         => 'Tous sur les voitures Volkswagen',
+        'show-ui'             => true,
     );
     register_post_type('cars', $args);
 }
 add_action('init', 'cars_post_type');
-
-// TAXONOMY
-
-function cars_taxonomy() {
-    $args = array(  /*
-        'labels' => array(          // Same as in cars_post_type() function
-            'name' => 'Modeles',    // To display in WP backend -- if 'labels commented, WPBackend displays 'Tags'/'c   ategories' 
-            'singular_name' => 'Modele',
-        ),  */
-        'public' => true,
-        'hierarchical' => false, //true -- True makes it for Categories, False for Tags 
-    );
-    register_taxonomy('Modeles', array('cars'), $args);  // array('cars') arg. refers to 'cars' of the register_post_type('cars', $args) function above
-}
-add_action('init', 'cars_taxonomy');

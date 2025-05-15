@@ -3,7 +3,9 @@
     <main class="container">
         <section class="page-wrap">
 
-            <h1>Front-page.php</h1>
+            <h4>Front-page.php</h4>
+
+            <h1> <?php the_title(); ?> </h1>
 
             <?php get_template_part('includes/section', 'pages'); ?>
 
