@@ -113,70 +113,64 @@ add_action('widgets_init', 'my_sidebars');
 
 // TAXONOMY
 
-function cars_taxonomy()
-{
+function idles_taxonomy() {
     $args = array(
-        'labels' => array(          // Same as in cars_post_type() function
-            'name' => 'Modele',    // To display in WP backend
-            'singular_name'    => 'Modele',
+        'labels' => array(
+            'name' => 'Idles',
+            'singular_name'    => 'Idles',
             'plural_name'      => 'Modeles', // libellé affiché dans le menu
-            'search_items'     => 'Rechercher une Voiture',
-            'all_items'        => 'Toutes les voitures Vokswagen',
-            'edit_item'        => 'Editer la Voiture',
-            'update_item'      => 'Modifier la Voiture',
-            'add_new_item'     => 'Ajouter une nouvelle Volks',
-            'new_item_name'    => 'Ajouter une nouvelle voiture',
-            'menu_name'        => 'Une VW', /*
-            'not_found'        => 'Non trouvée',
-            'not_found_in_trash' => 'Non trouvée dans la corbeille',
+            'search_items'     => 'Find an element of idles',
+            'all_items'        => 'Ihricen akk n yedles',
+            'edit_item'        => 'Edit idles element',
+            'update_item'      => 'Modify idles element',
+            'add_new_item'     => 'Add idles element',
+            'new_item_name'    => 'Add idles element name',
+            'menu_name'        => 'Idles',
             'set_featured_image' => 'Set Featured_image',
             'use_featured_image' => 'Use_featured_image',
-            'set_featured_image'    => 'Featured image',    */
-        ),  // if 'labels are commented, WPBackend will displays 'Tags' or 'categories'
-        'show_in_rest' => true,
+            'set_featured_image' => 'Featured image',
+        ),
         'public' => true,
+        'show_in_rest' => true,
         'hierarchical' => true, // True makes it for Categories, False for Tags
         'show_admin_column' => true,
     );
-    register_taxonomy('Modeles', array('cars'), $args);  // array('cars') arg. refers to 'cars' of the register_post_type('cars', $args) function above
+    register_taxonomy("idles", 'post', $args);
 }
-add_action('init', 'cars_taxonomy');
+add_action('init', 'idles_taxonomy');
+
 
 // CUSTOM POST TYPES
 
-function cars_post_type() {
+function tutlayt_post_type() {
     $args = array(
-        'label'               => 'Voitures VW',
-        'labels' => array(
-            'name' => 'Cars',       // To display in WP backend
-            'singular_name' => 'Car',
-            'menu_name'       => 'Voitures', // libellé affiché dans le menu
-            'all_items'         => 'Toutes les voitures Vokswagen',
-            'view_item'        => 'Voir les séries de Voitures',
-            'add_new_item'     => 'Ajouter une nouvelle voiture Volkswagen',
-            'add_new'          => 'Ajouter',
-            'edit_item'        => 'Editer la Voiture',
-            'update_item'      => 'Modifier la Voiture',
-            'search_items'     => 'Rechercher une Voiture', /*
-            'not_found'        => 'Non trouvée',
-            'not_found_in_trash' => 'Non trouvée dans la corbeille',
-            'set_featured_image' => 'Set Featured_image',
-            'use_featured_image' => 'Use_featured_image',
-            'set_featured_image'    => 'Featured image',    */
-            'show_in_rest' => true,
-        ),
-        'hierarchical' => false,    // true makes it for 'pages', false or desactivated for 'articles'
-        'public' => true,
-        'menu_postion' => 1,
-        'menu_icon' => 'dashicons-car', // Find an icon in google -> 'wordpress dashicons'
-        'has_archive' => true,
-        // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-        'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
-        'rewrite' => array('slug' => 'cars'),
-
-        'description'         => 'Tous sur les voitures Volkswagen',
-        'show-ui'             => true,
-    );
-    register_post_type('cars', $args);
+                'labels' => array(
+                                'name' => 'Tutlayt', // To display in WP backend
+                                'singular_name' => 'Tutlayt',
+                                'menu_name' => 'Tutlayin', // libellé affiché dans le menu
+                                'all_items' => 'Tutlayin n Tmazgha',
+                                'view_item' => 'Wali tutlayt',
+                                'add_new_item' => 'Rnud tutlayt',
+                                'add_new' => 'Rnud',
+                                'edit_item' => 'Edit tutlayt',
+                                'update_item' => 'Veddel tutlayt',
+                                'search_items' => 'Huf tutlayt', /*
+                                'not_found'        => 'Non trouvée',
+                              'not_found_in_trash' => 'Non trouvée dans la corbeille',
+                                'set_featured_image' => 'Set Featured_image',
+                              'use_featured_image' => 'Use_featured_image',
+                              'set_featured_image'    => 'Featured image',
+                              'show_in_rest' => true, */
+                ),
+                'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
+                'public' => true,
+                'menu_icon' => 'dashicons-format-status', // Find an icon in google -> 'wordpress dashicons'
+                'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+                'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+                'rewrite' => array('slug' => 'cars'),
+                'description' => 'Tous sur les voitures Volkswagen',
+                'show-ui' => true,    
+            );
+    register_post_type("tutlayt", $args);
 }
-add_action('init', 'cars_post_type');
+add_action('init', 'tutlayt_post_type');
