@@ -14,6 +14,7 @@ function enregistrer_menus() {
 //add_action('init', 'enregistrer_menus');
 
 
+add_theme_support('menus');
 register_nav_menus(
     array(
         'menu_principal' => 'Menu principal',
@@ -25,8 +26,6 @@ register_nav_menus(
 
 if (! function_exists('setup')):
     function setup() {
-        //enregistrer_menus();
-        add_theme_support('menus');
     //  add_theme_support('widgets');
         add_theme_support('post-thumbnails', array('post', 'page', 'custom-post-type') );
         add_image_size('small', 200, 150, true); // False = not hard cropped
@@ -41,12 +40,14 @@ function scripts_footer()
 }
 
 add_action('after_setup_theme', 'setup');
-// add_action('wp_enqueue_scripts', 'the_styles');
 add_action('wp_footer', 'scripts_footer');
+// add_action('wp_enqueue_scripts', 'the_styles');
 
 
 
 /***************************************************************************** */
+
+// BOOTSTRAP
 
 /*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
 function the_styles()  {
@@ -154,13 +155,12 @@ function tutlayt_post_type() {
             'add_new' => 'Rnud',
             'edit_item' => 'Edit tutlayt',
             'update_item' => 'Veddel tutlayt',
-            'search_items' => 'Huf tutlayt', /*
-            'not_found'    => 'Non trouvée',
-            'not_found_in_trash' => 'Non trouvée dans la corbeille',
-            'set_featured_image' => 'Set Featured_image',
-            'use_featured_image' => 'Use_featured_image',
-            'set_featured_image'    => 'Featured image',
-            'show_in_rest' => true, */
+            'search_items' => 'Huf tutlayt',
+            'not_found' => 'Urd nuf-ara',
+            'not_found_in_trash' => 'Urd nuf-ara deg texnanset',
+            'set_featured_image' => 'Rnud tawlaft n weskan',
+            'use_featured_image' => 'Veddel tawlaft n weskan',
+            'set_featured_image' => 'Sag tawlaft n weskan',
         ),
         'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
         'public' => true,
@@ -168,8 +168,9 @@ function tutlayt_post_type() {
         'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
         'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
     //    'rewrite' => array('slug' => 'Tutlayt'),
-        'description' => 'Tous sur les voitures Volkswagen',
-        'show-ui' => true,    
+        'description' => 'Kulletch ghef tutlayin timazighin',
+        'show-ui' => true,
+        'show_in_rest' => true,
     );
     register_post_type("tutlayt", $args);
 }
