@@ -28,7 +28,7 @@ if (! function_exists('setup')):
         //enregistrer_menus();
         add_theme_support('menus');
     //  add_theme_support('widgets');
-        add_theme_support('post-thumbnails');
+        add_theme_support('post-thumbnails', array('post', 'page', 'custom-post-type') );
         add_image_size('small', 200, 150, true); // False = not hard cropped
         add_image_size('medium', 600, 400, true);
         add_image_size('large', 1000, 750, true);
@@ -112,28 +112,29 @@ add_action('widgets_init', 'my_sidebars');
 /***************************************************************************** */
 
 // TAXONOMY
-
 function idles_taxonomy() {
     $args = array(
         'labels' => array(
             'name' => 'Idles',
             'singular_name'    => 'Idles',
-            'plural_name'      => 'Modeles', // libellé affiché dans le menu
-            'search_items'     => 'Find an element of idles',
+            'plural_name'      => 'Idlisen', // libellé affiché dans le menu
+            'search_items'     => 'Afed asafar idles',
             'all_items'        => 'Ihricen akk n yedles',
-            'edit_item'        => 'Edit idles element',
-            'update_item'      => 'Modify idles element',
-            'add_new_item'     => 'Add idles element',
-            'new_item_name'    => 'Add idles element name',
+            'edit_item'        => 'Edit asafar n idles',
+            'update_item'      => 'Veddel asafar n idles',
+            'add_new_item'     => 'Rnud asafar n idles',
+            'new_item_name'    => 'Aru isem n usafar n idles',
             'menu_name'        => 'Idles',
             'set_featured_image' => 'Set Featured_image',
             'use_featured_image' => 'Use_featured_image',
             'set_featured_image' => 'Featured image',
         ),
         'public' => true,
+        'show_ui' => true,
         'show_in_rest' => true,
         'hierarchical' => true, // True makes it for Categories, False for Tags
         'show_admin_column' => true,
+        'show_tagcloud' => true,
     );
     register_taxonomy("idles", 'post', $args);
 }
@@ -141,36 +142,35 @@ add_action('init', 'idles_taxonomy');
 
 
 // CUSTOM POST TYPES
-
 function tutlayt_post_type() {
     $args = array(
-                'labels' => array(
-                                'name' => 'Tutlayt', // To display in WP backend
-                                'singular_name' => 'Tutlayt',
-                                'menu_name' => 'Tutlayin', // libellé affiché dans le menu
-                                'all_items' => 'Tutlayin n Tmazgha',
-                                'view_item' => 'Wali tutlayt',
-                                'add_new_item' => 'Rnud tutlayt',
-                                'add_new' => 'Rnud',
-                                'edit_item' => 'Edit tutlayt',
-                                'update_item' => 'Veddel tutlayt',
-                                'search_items' => 'Huf tutlayt', /*
-                                'not_found'        => 'Non trouvée',
-                              'not_found_in_trash' => 'Non trouvée dans la corbeille',
-                                'set_featured_image' => 'Set Featured_image',
-                              'use_featured_image' => 'Use_featured_image',
-                              'set_featured_image'    => 'Featured image',
-                              'show_in_rest' => true, */
-                ),
-                'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
-                'public' => true,
-                'menu_icon' => 'dashicons-format-status', // Find an icon in google -> 'wordpress dashicons'
-                'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-                'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
-                'rewrite' => array('slug' => 'cars'),
-                'description' => 'Tous sur les voitures Volkswagen',
-                'show-ui' => true,    
-            );
+        'labels' => array(
+            'name' => 'Tutlayt', // To display in WP backend
+            'singular_name' => 'Tutlayt',
+            'menu_name' => 'Tutlayin', // libellé affiché dans le menu
+            'all_items' => 'Tutlayin n Tmazgha',
+            'view_item' => 'Wali tutlayt',
+            'add_new_item' => 'Rnud tutlayt',
+            'add_new' => 'Rnud',
+            'edit_item' => 'Edit tutlayt',
+            'update_item' => 'Veddel tutlayt',
+            'search_items' => 'Huf tutlayt', /*
+            'not_found'    => 'Non trouvée',
+            'not_found_in_trash' => 'Non trouvée dans la corbeille',
+            'set_featured_image' => 'Set Featured_image',
+            'use_featured_image' => 'Use_featured_image',
+            'set_featured_image'    => 'Featured image',
+            'show_in_rest' => true, */
+        ),
+        'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
+        'public' => true,
+        'menu_icon' => 'dashicons-format-status', // Find an icon in google -> 'wordpress dashicons'
+        'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+        'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+    //    'rewrite' => array('slug' => 'Tutlayt'),
+        'description' => 'Tous sur les voitures Volkswagen',
+        'show-ui' => true,    
+    );
     register_post_type("tutlayt", $args);
 }
 add_action('init', 'tutlayt_post_type');
