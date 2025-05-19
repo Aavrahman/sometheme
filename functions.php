@@ -113,57 +113,57 @@ add_action('widgets_init', 'my_sidebars');
 /***************************************************************************** */
 
 // TAXONOMY
-function idles_taxonomy() {
+function tutlayt_categories_taxonomy() {
     $args = array(
         'labels' => array(
+            'menu_name'        => 'Tutlayt Categories',
             'name' => 'Idles',
-            'singular_name'    => 'Idles',
-            'plural_name'      => 'Idlisen', // libellé affiché dans le menu
-            'search_items'     => 'Afed asafar idles',
-            'all_items'        => 'Ihricen akk n yedles',
-            'edit_item'        => 'Edit asafar n idles',
-            'update_item'      => 'Veddel asafar n idles',
-            'add_new_item'     => 'Rnud asafar n idles',
-            'new_item_name'    => 'Aru isem n usafar n idles',
-            'menu_name'        => 'Idles',
+            'singular_name'    => 'Tutlayt',
+            'plural_name'      => 'Tutlayin', // libellé affiché dans le menu
+            'search_items'     => 'Afed category Tutlayt',
+            'all_items'        => 'Ihricen akk n Tutlayt',
+            'edit_item'        => 'Edit asafar n Tutlayt',
+            'update_item'      => 'Veddel asafar n Tutlayt',
+            'add_new_item'     => 'Rnud asafar n Tutlayt',
+            'new_item_name'    => 'Aru isem n usafar n Tutlayt',
             'set_featured_image' => 'Set Featured_image',
             'use_featured_image' => 'Use_featured_image',
             'set_featured_image' => 'Featured image',
         ),
         'public' => true,
+        'hierarchical' => true, // True makes it for Categories, False for Tags
         'show_ui' => true,
         'show_in_rest' => true,
-        'hierarchical' => true, // True makes it for Categories, False for Tags
         'show_admin_column' => true,
         'show_tagcloud' => true,
     );
-    register_taxonomy("idles", 'post', $args);
+    register_taxonomy("tutlayt_categories", 'tutlayt', $args);
 }
-add_action('init', 'idles_taxonomy');
+add_action('init', 'tutlayt_categories_taxonomy');
 
 
 // CUSTOM POST TYPES
-function tutlayt_post_type() {
+function tutlayt_page_type() {
     $args = array(
         'labels' => array(
+            'menu_name' => 'Tutlayin pages', // libellé affiché dans le menu
             'name' => 'Tutlayt', // To display in WP backend
             'singular_name' => 'Tutlayt',
-            'menu_name' => 'Tutlayin', // libellé affiché dans le menu
-            'all_items' => 'Tutlayin n Tmazgha',
-            'view_item' => 'Wali tutlayt',
-            'add_new_item' => 'Rnud tutlayt',
-            'add_new' => 'Rnud',
-            'edit_item' => 'Edit tutlayt',
-            'update_item' => 'Veddel tutlayt',
-            'search_items' => 'Huf tutlayt',
-            'not_found' => 'Urd nuf-ara',
+            'all_items' => 'Tutlayin pages',
+            'view_item' => 'Wali tutlayt pages',
+            'add_new_item' => 'Rnud tutlayt page',
+            'add_new' => 'Rnud tutlayt page',
+            'edit_item' => 'Edit tutlayt page',
+            'update_item' => 'Veddel tutlayt page',
+            'search_items' => 'Huf tutlayt page',
+            'not_found' => 'Urd nuf-ara tutlayt page',
             'not_found_in_trash' => 'Urd nuf-ara deg texnanset',
             'set_featured_image' => 'Rnud tawlaft n weskan',
             'use_featured_image' => 'Veddel tawlaft n weskan',
             'set_featured_image' => 'Sag tawlaft n weskan',
         ),
-        'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
         'public' => true,
+        'hierarchical' => true,        // true makes it for 'pages', false or desactivated for 'articles'
         'menu_icon' => 'dashicons-format-status', // Find an icon in google -> 'wordpress dashicons'
         'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
         'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
@@ -173,5 +173,74 @@ function tutlayt_post_type() {
         'show_in_rest' => true,
     );
     register_post_type("tutlayt", $args);
+}
+add_action('init', 'tutlayt_page_type');
+
+
+
+// TAXONOMY
+function tutlayt_tags_taxonomy()
+{
+    $args = array(
+        'labels' => array(
+            'menu_name'        => 'Tutlayt Tags',
+            'name' => 'Idles-tags',
+            'singular_name'    => 'Tutlayt-tags',
+            'plural_name'      => 'Tutlayin-tags', // libellé affiché dans le menu
+            'search_items'     => 'Afed tags Tutlayt',
+            'all_items'        => 'Ihricen akk n Tutlayt',
+            'edit_item'        => 'Edit tags Tutlayt',
+            'update_item'      => 'Veddel asafar n Tutlayt',
+            'add_new_item'     => 'Rnud Tag n Tutlayt',
+            'new_item_name'    => 'Aru isem n usafar n Tutlayt',
+            'set_featured_image' => 'Set Featured_image',
+            'use_featured_image' => 'Use_featured_image',
+            'set_featured_image' => 'Featured image',
+        ),
+        'public' => true,
+        'hierarchical' => false, // True makes it for Categories, False for Tags
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'show_tagcloud' => true,
+    );
+//    register_taxonomy("idles", 'tutlayt-post', $args);
+    register_taxonomy("tutlayt-tag", 'tutlayt-post', $args);
+}
+add_action('init', 'tutlayt_tags_taxonomy');
+
+
+// CUSTOM POST TYPES
+function tutlayt_post_type()
+{
+    $args = array(
+        'labels' => array(
+            'menu_name' => 'Tutlayin posts', // libellé affiché dans le menu
+            'name' => 'Tutlayt-post', // To display in WP backend
+            'singular_name' => 'Tutlayt-post',
+            'all_items' => 'Tutlayin posts',
+            'view_item' => 'Wali tutlayt post',
+            'add_new_item' => 'Rnud tutlayt post',
+            'add_new' => 'Rnud post',
+            'edit_item' => 'Edit tutlayt post',
+            'update_item' => 'Veddel tutlayt post',
+            'search_items' => 'Huf tutlayt post',
+            'not_found' => 'Urd nuf-ara tutlayt post',
+            'not_found_in_trash' => 'Urd nuf-ara deg texnanset',
+            'set_featured_image' => 'Rnud tawlaft n weskan',
+            'use_featured_image' => 'Veddel tawlaft n weskan',
+            'set_featured_image' => 'Sag tawlaft n weskan',
+        ),
+        'public' => true,
+        'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
+        'menu_icon' => 'dashicons-buddicons-pm', // Find an icon in google -> 'wordpress dashicons'
+        'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+        'support' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+        //    'rewrite' => array('slug' => 'Tutlayt'),
+        'description' => 'Kulletch ghef tutlayin timazighin - post',
+        'show-ui' => true,
+        'show_in_rest' => true,
+    );
+    register_post_type("tutlayt-post", $args);
 }
 add_action('init', 'tutlayt_post_type');

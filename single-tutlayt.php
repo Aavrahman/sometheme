@@ -3,9 +3,9 @@
     <main class="container">
 
         <section class="page-wrap">
-            <h1>template single-tutlayt.php</h1>
+            <h1>template : single-tutlayt.php</h1>
 
-            <?php get_template_part('includes/section', 'cars'); ?>
+            <?php get_template_part('includes/section', 'taqvaylit'); ?>
 
             <?php wp_link_pages(); ?>
         </section>

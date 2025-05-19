@@ -3,15 +3,19 @@
 <main class="container">
     <section class="page-wrap">
 
-    <h1> Nom de la catég orie: <?php echo single_cat_title(); ?> </h1> <!-- DISPLAYS THE TITLE OF THE CATEGORY -->
+        <h1> Nom de la catég orie: <?php echo single_cat_title(); ?> </h1> <!-- DISPLAYS THE TITLE OF THE CATEGORY -->
 
-    <?php get_template_part('includes/taqvaylit', 'archive'); ?>
+        <?php // get_template_part('includes/taqvaylit', 'archive'); ?>
 
-    <?php previous_posts_link(); // Added in'section-archive.php' template part ?>
-    <?php next_posts_link(); // Added in'section-archive.php' template part ?>
+        <?php get_template_part('includes/section', 'taqvaylit'); ?>
 
-    <!-- OR: the code down -->
-    <?php /*
+        <?php previous_posts_link(); // Added in'section-archive.php' template part 
+        ?>
+        <?php next_posts_link(); // Added in'section-archive.php' template part 
+        ?>
+
+        <!-- OR: the code down -->
+        <?php /*
         global $wp_query;
         $big = 999999999;
         echo paginate_links(array(
@@ -20,7 +24,7 @@
             'current' => max(1, get_query_var('paged')),
             'total' => $wp_query->max_num_pages
         )); */
-    ?>
+        ?>
 
     </section>
     <?php if (is_active_sidebar("articles")): ?>
