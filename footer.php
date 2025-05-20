@@ -14,18 +14,20 @@
         <p>© 2025 Un Theme - Tous droits réservés </p>
 
         <div> 
-            <?php if(is_active_sidebar("articles")): ?>
-                <?php dynamic_sidebar('Pied1'); ?>
-            <?php else: ?>
-                <p> No sidebar available here </p>
-            <?php endif ?>
+            <?php
+            //    if(is_active_sidebar("articles")):
+            //    dynamic_sidebar('Pied1'); ?>
+            <?php // else: ?>
+                <p> <!-- No sidebar available here --> </p>
+            <?php // endif ?>
         </div>
         <div> 
-            <?php if(is_active_sidebar("articles")): ?>
-                <?php dynamic_sidebar('Pied2'); ?>
-            <?php else: ?>
-                <p> No sidebar available here </p>
-            <?php endif ?>
+            <?php
+                // if(is_active_sidebar("articles")):
+                // dynamic_sidebar('Pied2'); ?>
+            <?php // else: ?>
+                <p> <!-- No sidebar available here --> </p>
+            <?php // endif ?>
         </div>
     </div>
 </footer>
