@@ -13,8 +13,18 @@ if (have_posts()):
 
                 <section class="row">
                     <?php if (has_post_thumbnail()): ?>
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                             <img src="<?php the_post_thumbnail_url("medium"); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <ul>
+                                        <li> <p> Tama: <?php echo get_post_meta($post->ID, 'Region', true); ?> </p> </li>
+                                        <li> <p> Anect: <?php echo get_post_meta($post->ID, 'Number', true); ?> </p> </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                     <?php
                     else:
@@ -22,7 +32,7 @@ if (have_posts()):
                         <h3> No thumbnails here </h3>
                     <?php endif; ?>
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-6">
 
                         <p> Iffghed ass n <?php echo get_the_date('d/m/Y h:i:s'); ?> </p>
 

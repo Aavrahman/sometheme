@@ -1,5 +1,5 @@
 <?php
-/* Gestion des images mises en avant
+/* Gestion des images mises en avant */
 add_theme_support("post-thumbnails");
 set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
 ////////////////////////////////////////////////////////////// */
@@ -23,7 +23,7 @@ register_nav_menus(
         'about_us' => 'About us' 
     )
 );
-
+/*
 if (! function_exists('setup')):
     function setup() {
     //  add_theme_support('widgets');
@@ -33,14 +33,14 @@ if (! function_exists('setup')):
         add_image_size('large', 1000, 750, true);
     }
 endif;
-
+*/
 function scripts_footer()
 {
     //    wp_enqueue_script('init', get_template_directory_uri().'/js/init.js', array('jquery'));
 }
 
-add_action('after_setup_theme', 'setup');
-add_action('wp_footer', 'scripts_footer');
+//add_action('after_setup_theme', 'setup');
+//add_action('wp_footer', 'scripts_footer');
 // add_action('wp_enqueue_scripts', 'the_styles');
 
 
@@ -133,17 +133,17 @@ function tutlayt_page_type()
             'not_found_in_trash' => 'Urd nuf-ara deg texnanset',
             'set_featured_image' => 'Rnud tawlaft n weskan',
             'use_featured_image' => 'Veddel tawlaft n weskan',
-            'set_featured_image' => 'Sag tawlaft n weskan',
+            'set_featured_image' => 'Rnud tawlaft taweskant',
         ),
         'public' => true,
         'hierarchical' => true,        // true makes it for 'pages', false or desactivated for 'articles'
         'menu_icon' => 'dashicons-format-status', // Find an icon in google -> 'wordpress dashicons'
         'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
         'supports' => array('title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields', 'post-formats'),
-        //    'rewrite' => array('slug' => 'Tutlayt'),
         'description' => 'Kulletch ghef tutlayin timazighin',
-        'show-ui' => true,
-    //    'show_in_rest' => true,
+        'show-ui' => true,          /*
+        'rewrite' => array('slug' => 'Tutlayt'),
+        'show_in_rest' => true,     */
     );
     register_post_type("tutlayt_page", $args);
 }
@@ -168,7 +168,7 @@ function tutlayt_post_type()
             'not_found_in_trash' => 'Urd nuf-ara deg texnanset',
             'set_featured_image' => 'Rnud tawlaft n weskan',
             'use_featured_image' => 'Veddel tawlaft n weskan',
-            'set_featured_image' => 'Sag tawlaft n weskan',
+            'set_featured_image' => 'Rnud tawlaft taweskant',
         ),
         'public' => true,
         'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
@@ -179,7 +179,7 @@ function tutlayt_post_type()
         'description' => 'Kulletch ghef tutlayin timazighin - post',
         'rewrite' => array('slug' => 'Tutlayt'),
         'show-ui' => true,
-        'taxonomies' => array('category'),
+   //     'taxonomies' => array('category'),
     //  'show_in_rest' => true,
     );
     register_post_type("tutlayt_post", $args);

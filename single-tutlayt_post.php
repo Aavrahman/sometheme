@@ -3,7 +3,7 @@
     <main class="container">
 
         <section class="page-wrap">
-            <h1>template : single-tutlayt-post.php</h1>
+            <h1>template : single-tutlayt_post.php</h1>
 
             <?php get_template_part('includes/section', 'taqvaylit'); ?>
 
