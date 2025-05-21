@@ -19,12 +19,20 @@ if (have_posts()):
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul>
-                                    <?php if(get_post_meta($post->ID, 'Region', true)): ?>
-                                        <li> <p> Tama: <?php echo get_post_meta($post->ID, 'Region', true); ?> </p> </li>
-                                    <?php endif; ?>
-                                    <?php if(get_post_meta($post->ID, 'Number', true)): ?>
-                                        <li> <p> Anect: <?php echo get_post_meta($post->ID, 'Number', true); ?> </p> </li>
-                                    <?php endif; ?>
+                                        <?php  if (get_post_meta($post->ID, 'Region', true)): ?>
+                                            <li>
+                                                <p> Tama: <?php echo get_post_meta($post->ID, 'Region', true); ?>
+                                                     <?php // If 'Advanced Custom Fields' plugin is used, use the function here bellow :
+                                                    // the_field('region'); ?> </p>
+                                            </li>
+                                        <?php endif; ?>
+                                        <?php if (get_post_meta($post->ID, 'Number', true)): ?>
+                                            <li>
+                                                <p> Anect: <?php echo get_post_meta($post->ID, 'Number', true); ?>
+                                                    <?php // If 'Advanced Custom Fields' plugin is used, use the function here bellow :
+                                                          //    the_field('number'); ?> </p>
+                                            </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -81,8 +89,12 @@ if (have_posts()):
                         <?php // echo $category->name; 
                         ?>
                     </a>
-            <?php
+                <?php
                 endforeach;
+            else:
+                ?>
+                <p> No categories for <b> <?php the_title(); ?> </b> </p>
+            <?php
             endif;
             ?>
         </section>

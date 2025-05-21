@@ -23,26 +23,13 @@ register_nav_menus(
         'about_us' => 'About us' 
     )
 );
-/*
-if (! function_exists('setup')):
-    function setup() {
-    //  add_theme_support('widgets');
-        add_theme_support('post-thumbnails', array('post', 'page', 'custom-post-type') );
-        add_image_size('small', 200, 150, true); // False = not hard cropped
-        add_image_size('medium', 600, 400, true);
-        add_image_size('large', 1000, 750, true);
-    }
-endif;
-*/
+
 function scripts_footer()
 {
     //    wp_enqueue_script('init', get_template_directory_uri().'/js/init.js', array('jquery'));
 }
 
-//add_action('after_setup_theme', 'setup');
 //add_action('wp_footer', 'scripts_footer');
-// add_action('wp_enqueue_scripts', 'the_styles');
-
 
 
 /***************************************************************************** */
