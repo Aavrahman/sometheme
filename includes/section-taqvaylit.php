@@ -19,8 +19,12 @@ if (have_posts()):
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul>
+                                    <?php if(get_post_meta($post->ID, 'Region', true)): ?>
                                         <li> <p> Tama: <?php echo get_post_meta($post->ID, 'Region', true); ?> </p> </li>
+                                    <?php endif; ?>
+                                    <?php if(get_post_meta($post->ID, 'Number', true)): ?>
                                         <li> <p> Anect: <?php echo get_post_meta($post->ID, 'Number', true); ?> </p> </li>
+                                    <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
