@@ -236,3 +236,56 @@ function tutlayt_tags_taxonomy()
     register_taxonomy("tutlayt-tag", array('tutlayt_page', 'tutlayt_post'), $args);
 }
 add_action('init', 'tutlayt_tags_taxonomy');
+
+
+/* //////////////////// FORMS /////////////////// */
+add_action("wp_ajax_enquire", "enquire_form");
+add_action("wp_ajax_nopriv_enquire", "enquire_form");
+
+function enquire_form() {
+
+    if( !wp_verify_nonce($_POST['nonce'], 'ajax_nonce') )   // Check if the nonce ('ajax_nonce') dont' matches with that sent
+    {
+        wp_send_json_error('Nonce is incorrect !', 401);
+        die();
+    }
+
+    $formdata = [];
+
+    wp_parse_str($_POST['enquire'], $formdata);
+
+    // admin address
+    $admin_email = get_option('admin_email');
+
+    //email headers:
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'From:' . $admin_email;
+    $headers[] = 'Replay-to:'.$formdata['email'];
+
+    // Whom we are sending email to ?
+    $send_to = $admin_email; 
+
+    //Subject
+    $subject = "Enquiry from : ". $formdata['fname'] .' '. $formdata['lname'];
+
+    //Message
+    $message = '';
+    foreach($formdata as $index => $field)
+    {
+        $message .= '<strong>'. $index.'</strong>: '. $field .'<br />';
+    }
+
+    try {
+        if(wp_mail($send_to, $subject, $message, $headers)) {
+            wp_send_json_success('emial sent (:)');
+        } else {
+
+            wp_send_json_success('Email error');
+        }
+    } catch (Exception $e) {
+
+        wp_send_json_error($e-getMessage());
+    }
+
+    wp_send_json_success($formdata['fname']);
+}

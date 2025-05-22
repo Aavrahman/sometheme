@@ -14,7 +14,7 @@
                                 <?php endif; ?>
 
                                 <div class="col-lg-9">
-                                    <p> Iffghed ass n <?php echo get_the_date('d/m/Y h:i:s'); ?> </p>
+                                    <p> -- Iffghed ass n <?php echo get_the_date('d/m/Y h:i:s'); ?> -- </p>
                                     <?php the_content(); ?>
                                     <?php // the_author(); 
                                     ?>
