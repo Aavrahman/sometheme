@@ -1,50 +1,10 @@
 <?php
-/* Gestion des images mises en avant */
-add_theme_support("post-thumbnails");
-set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
-////////////////////////////////////////////////////////////// */
 
-// ENREGISTRER MENU  
-/*
-function enregistrer_menus() {
-  //  register_nav_menu('menu_principal', 'Menu principal' ); // register_nav_menu('menu_principal', __('Menu principal') ); 
-  //  register_nav_menu('the_footer_menu', 'The Footer' );    // register_nav_menu('the_footer_menu', __('The Footer') );
-  //  register_nav_menu('404', '404' );
-} */
-//add_action('init', 'enregistrer_menus');
-
-
-add_theme_support('menus');
-register_nav_menus(
-    array(
-        'menu_principal' => 'Menu principal',
-        'the_footer_menu' => 'The Footer',
-        '404' => 'Error messages',
-        'about_us' => 'About us' 
-    )
-);
-
-function scripts_footer()
+/* //////////////////// BOOTSTRAP /////////////////// */
+// BOOTSTRAP: Load CSS
+function load_css()
 {
-    //    wp_enqueue_script('init', get_template_directory_uri().'/js/init.js', array('jquery'));
-}
-
-//add_action('wp_footer', 'scripts_footer');
-
-
-/***************************************************************************** */
-
-// BOOTSTRAP
-
-/*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
-function the_styles()  {
-    wp_enqueue_style('init', get_stylesheet_uri());
-}   */
-
-// ADD CSS AND JS
-
-function load_css() {
-    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all' ); // 'false' for version
+    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all'); // 'false' for version
     wp_enqueue_style('bootstrap');
 
     wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), false, 'all');
@@ -52,16 +12,39 @@ function load_css() {
 }
 add_action('wp_enqueue_scripts', 'load_css');
 
-function load_js() {
+// BOOTSTRAP: Load JS
+function load_js()
+{
     wp_enqueue_script('jquery');
     wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', false, true);
     wp_enqueue_style('bootstrap');
 }
 add_action('wp_enqueue_scripts', 'load_js');
-/***************************************************************************** */
 
-// Widgets
 
+/*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
+function the_styles()  {
+    wp_enqueue_style('init', get_stylesheet_uri());
+}   */
+
+/* //////////////////// THEME OPTIONS /////////////////// */
+// GESTION IMAGES D'ARTICLES ET DE PAGES
+add_theme_support("post-thumbnails");
+set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
+
+// ENREGISTRER MENUS
+add_theme_support('menus');
+register_nav_menus(
+    array(
+        'menu_principal' => 'Menu principal',
+        'the_footer_menu' => 'The Footer',
+        'mobile_menu' => 'Mobile menu',
+        '404' => 'Error messages',
+        'about_us' => 'About us' 
+    )
+);
+
+/* //////////////////// WIDGETS /////////////////// */
 add_theme_support('widgets');
 
 function my_sidebars() {
@@ -97,9 +80,8 @@ function my_sidebars() {
 }
 add_action('widgets_init', 'my_sidebars');
 
-/***************************************************************************** */
 
-// // // // TAXONOMY // // // //
+/* //////////////////// TAXONOMY  & CUSTOM POST TYPE /////////////////// */
 
 // CUSTOM POST TYPE: PAGE
 function tutlayt_page_type()
@@ -236,6 +218,15 @@ function tutlayt_tags_taxonomy()
     register_taxonomy("tutlayt-tag", array('tutlayt_page', 'tutlayt_post'), $args);
 }
 add_action('init', 'tutlayt_tags_taxonomy');
+
+
+/* //////////////////// REGISTER CUSTOM NAVIGATION WELKER /////////////////// */
+/** * Register Custom Navigation Walker  */
+function register_navwalker()
+{
+    require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action('after_setup_theme', 'register_navwalker');
 
 
 /* //////////////////// FORMS /////////////////// */

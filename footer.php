@@ -2,12 +2,12 @@
     <div class="container">
         <?php
             wp_nav_menu(
-                array(  /*
-                    'theme_location' => 'the_footer_menu',
+                array(  
+                  'theme_location' => 'the_footer_menu',
                     'menu_id' => 'ftr_menu_id',
-                    'menu_class' => 'bottom-menu'   */
-                    'menu' => 'The Footer'
-                )
+                    'menu_class' => 'top-menu',
+                //'menu' => 'The Footer'
+            )
             );
         ?>
 

@@ -15,17 +15,17 @@ footer {
 /* *** BOXES CONTAINIG THE MENU  *** */
 .container,
 .menu-menu-principal-container,
-.menu,
+.top-menu,
 .menu-item {
     height: 100%;
 }
 
-.menu {
+.top-menu {
     display: flex;
     justify-content: right;
 }
 
-.menu .menu-item {
+.top-menu .menu-item {
     display: block; /* NO MORE NEED FOR: list-style-type: none;  */
     align-content: center;
 }
@@ -40,7 +40,7 @@ footer {
 }
 
 /* *** DISPLAY SUB-MENU *** */
-.menu .menu-item-has-children:hover .sub-menu {
+.top-menu .menu-item-has-children:hover .sub-menu {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ footer {
     border-bottom: solid 1px rgb(199, 1, 1);;
 }
 
-.menu a {
+.top-menu a {
     padding: 0 1rem 0 0;
     color: #FFFFFF;
     text-decoration: none;
