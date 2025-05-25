@@ -28,11 +28,12 @@ function the_styles()  {
 }   */
 
 /* //////////////////// THEME OPTIONS /////////////////// */
-// GESTION IMAGES D'ARTICLES ET DE PAGES
+
+// Gestion thumbnails
 add_theme_support("post-thumbnails");
 set_post_thumbnail_size(450, 300, true); // TO SETUP THUMBNAILS SIZE
 
-// ENREGISTRER MENUS
+// Eentregistrament des menus
 add_theme_support('menus');
 register_nav_menus(
     array(
@@ -44,7 +45,7 @@ register_nav_menus(
     )
 );
 
-/* //////////////////// WIDGETS /////////////////// */
+// Entegistrament widgets
 add_theme_support('widgets');
 
 function my_sidebars() {
@@ -83,7 +84,7 @@ add_action('widgets_init', 'my_sidebars');
 
 /* //////////////////// TAXONOMY  & CUSTOM POST TYPE /////////////////// */
 
-// CUSTOM POST TYPE: PAGE
+// Custom post type : Page
 function tutlayt_page_type()
 {
     $args = array(
@@ -118,7 +119,7 @@ function tutlayt_page_type()
 }
 add_action('init', 'tutlayt_page_type');
 
-// CUSTOM POST TYPES: POST
+// Custom post type : Post
 function tutlayt_post_type()
 {
     $args = array(
@@ -155,8 +156,7 @@ function tutlayt_post_type()
 }
 add_action('init', 'tutlayt_post_type');
 
-
-// TAXONOMY: CATEGORY
+// Taxonomy: Category
 function tutlayt_categories_taxonomy() {
     $args = array(
         'labels' => array(
@@ -186,8 +186,7 @@ function tutlayt_categories_taxonomy() {
 }
 add_action('init', 'tutlayt_categories_taxonomy');
 
-
-// TAXONOMY: TAG
+// Taxonomy: Tag
 function tutlayt_tags_taxonomy()
 {
     $args = array(
@@ -214,13 +213,13 @@ function tutlayt_tags_taxonomy()
         'show_admin_column' => true,
    //     'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
     );
-//    register_taxonomy("idles", 'tutlayt-post', $args);
     register_taxonomy("tutlayt-tag", array('tutlayt_page', 'tutlayt_post'), $args);
 }
 add_action('init', 'tutlayt_tags_taxonomy');
 
 
-/* //////////////////// REGISTER CUSTOM NAVIGATION WELKER /////////////////// */
+/* //////////////////// REGISTER BOOTSTRAP WALKER CLASS /////////////////// */
+
 /** * Register Custom Navigation Walker  */
 function register_navwalker()
 {
