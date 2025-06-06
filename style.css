@@ -1,86 +1,34 @@
-/*
-Theme name: un theme
-Version: 0.1
-Author: ad inigh d Nekk
-Description: thème Un theme par Nekk
-The URI: https://...
-*/
-
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    color: #333;
-    width: 1400px;
-    margin: auto;
+@import "css/bootstrap.css";
+@import "css/bootstrap.min.css";
+h1 {
+  color: blue;
+  font-size: 4rem;
 }
 
-
-.menu,
-footer p {
-    padding: 0;
-    width: 95%;
+#hdr_menu_id, .top-menu {
+  height: 6rem;
+  background-color: blue;
 }
 
-footer p {
-    margin-left: 2rem;
+#hdr_menu_id, #ftr_menu_id {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#hdr_menu_id .menu-item, #ftr_menu_id .menu-item {
+  list-style-type: none;
+}
+#hdr_menu_id .menu-item a, #ftr_menu_id .menu-item a {
+  color: white;
+  margin-right: 1rem;
 }
 
-/*****************/
-
-main {
-    margin-top: .5rem;
-    margin-left: auto;
-    margin-right: auto;
-/*    width: 100%;  */
-    display: flex;
-    background-color: lightyellow;
-}
-/* --- */
-
-section {
-    width: 75%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+#hdr_menu_id {
+  justify-content: flex-end;
 }
 
-.articles {
-    width: 25%;
+#ftr_menu_id {
+  justify-content: flex-start;
 }
 
-.articles p, .articles a {
-    width: 96%;
-}
-
-.articles a {
-    display: inline-block;
-    text-decoration: none;
-    color: rgb(48, 48, 255);
-}
-
-.a-read {
-    font-weight: bolder;
-}
-
-.articles a:visited {
-    color: rgb(67, 29, 100);
-}
-
- article {
-    width: 100%;
-    margin-bottom: 1.1rem;
-}
-
-aside {
-    width: 25%;
-    background-color: rgb(255, 206, 210);
-}
-
-/**************/
-
-.wp-post-image {
-    width: 100%;
-    height: 170px;
-/*    height: 100%; */
-}
+/*# sourceMappingURL=style.css.map */

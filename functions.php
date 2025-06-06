@@ -2,6 +2,7 @@
 
 /* //////////////////// BOOTSTRAP /////////////////// */
 // BOOTSTRAP: Load CSS
+/*
 function load_css()
 {
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all'); // 'false' for version
@@ -20,6 +21,13 @@ function load_js()
     wp_enqueue_style('bootstrap');
 }
 add_action('wp_enqueue_scripts', 'load_js');
+*/
+
+function style_sheet()
+{
+    wp_enqueue_style('style', get_stylesheet_uri());  //BOOTSTRAP IS NOW IMPORTED BY THE CSS FILE
+}
+add_action('wp_enqueue_scripts', 'style_sheet');
 
 
 /*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
