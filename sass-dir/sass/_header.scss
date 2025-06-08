@@ -1,0 +1,29 @@
+#hdr_menu_id,
+.top-menu {
+    height: 6rem;
+    background-color: $blue;
+}
+
+#hdr_menu_id,
+#ftr_menu_id {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .menu-item {
+        list-style-type: none;
+
+        a {
+            color: $white;
+            margin-right: 1rem;
+        }
+    }
+}
+
+#hdr_menu_id {
+    justify-content: flex-end;
+}
+
+#ftr_menu_id {
+    justify-content: flex-start;
+}

@@ -1,24 +1,23 @@
 @import "css/bootstrap.css";
 @import "css/bootstrap.min.css";
-h1 {
-  color: blue;
-  font-size: 4rem;
-}
-
-#hdr_menu_id, .top-menu {
+#hdr_menu_id,
+.top-menu {
   height: 6rem;
   background-color: blue;
 }
 
-#hdr_menu_id, #ftr_menu_id {
+#hdr_menu_id,
+#ftr_menu_id {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#hdr_menu_id .menu-item, #ftr_menu_id .menu-item {
+#hdr_menu_id .menu-item,
+#ftr_menu_id .menu-item {
   list-style-type: none;
 }
-#hdr_menu_id .menu-item a, #ftr_menu_id .menu-item a {
+#hdr_menu_id .menu-item a,
+#ftr_menu_id .menu-item a {
   color: white;
   margin-right: 1rem;
 }
@@ -29,6 +28,11 @@ h1 {
 
 #ftr_menu_id {
   justify-content: flex-start;
+}
+
+h1 {
+  color: blue;
+  font-size: 4rem;
 }
 
 /*# sourceMappingURL=style.css.map */
