@@ -236,6 +236,64 @@ function register_navwalker()
 add_action('after_setup_theme', 'register_navwalker');
 
 
+/* //////////////////// SHORCODES /////////////////// */
+
+function inid_azul() {
+    $content = "Azul Fellawen akk !";
+    return $content;
+}
+add_shortcode('aakkuc', 'inid_azul');
+
+
+function azul_wis_sin($atts) {
+    $a = shortcode_atts(array('nom' => 'valeur1',
+                              'mot' => 'valeur2'),
+                        $atts
+                        );
+    $contenu = "<div>
+                    <h2> Le Mot </h2>
+                    <p> Nom : ".$a['nom'].".</p>
+                    <p> Message : ".$a['mot'].".</p>
+                </div";
+    return $contenu;
+}
+add_shortcode('awal', 'azul_wis_sin');
+
+
+function azul_wis_qrad($atts)
+{
+    $a = shortcode_atts(
+        array(
+            'src' => '',
+            'nom' => 'valeur1',
+            'mot' => 'valeur2'
+        ),
+        $atts
+    );
+    ob_start();
+    if($a['src'] == "") {
+?>
+        <div>
+            <h2> Le Mot </h2>
+            <p> Nom :   <?= $a['nom'] ?> </p>
+            <p> Message : <?= $a['mot'] ?> </p>
+        </div>";
+<?php
+    } else {
+?>
+        <div>
+            <h1> Les Mots </h1>
+            <p> Nom :   <?= $a['nom'] ?> </p>
+            <p> Message : <?= $a['mot'] ?> </p>
+        </div";
+<?php
+    }
+    $contenu = ob_get_contents();
+    ob_end_clean();
+    return $contenu;
+}
+add_shortcode('awalsin', 'azul_wis_qrad');
+
 /* //////////////////// FORMS /////////////////// */
 add_action("wp_ajax_enquire", "enquire_form");
 add_action("wp_ajax_nopriv_enquire", "enquire_form");
