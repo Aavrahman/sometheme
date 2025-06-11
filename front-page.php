@@ -9,6 +9,8 @@
 
             <?php get_template_part('includes/section', 'pages'); ?>
 
+            <?php // get_search_form(); ?>
+
         </section>
 
         <?php if (is_active_sidebar("articles")): ?>

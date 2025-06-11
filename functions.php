@@ -49,14 +49,15 @@ register_nav_menus(
         'the_footer_menu' => 'The Footer',
         'mobile_menu' => 'Mobile menu',
         '404' => 'Error messages',
-        'about_us' => 'About us' 
+        'about_us' => 'About us'
     )
 );
 
 // Entegistrament widgets
 add_theme_support('widgets');
 
-function my_sidebars() {
+function my_sidebars()
+{
     register_sidebar(array(
         'name' => 'Articles Sidebar',
         'id' => 'articles',
@@ -152,20 +153,21 @@ function tutlayt_post_type()
         'hierarchical' => false,        // true makes it for 'pages', false or desactivated for 'articles'
         'menu_icon' => 'dashicons-buddicons-pm', // Find an icon in google -> 'wordpress dashicons'
         'has_archive' => true, // Définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-    //    'supports' => array('thumbnail', 'title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'custom-fields', 'post-formats'),
+        //    'supports' => array('thumbnail', 'title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'custom-fields', 'post-formats'),
         'supports' => array('thumbnail', 'title', 'editor', 'comments', 'revisions', 'author', 'excerpt', 'custom-fields', 'post-formats'),
         'description' => 'Kulletch ghef tutlayin timazighin - post',
         'rewrite' => array('slug' => 'Tutlayt'),
         'show-ui' => true,
-   //     'taxonomies' => array('category'),
-    //  'show_in_rest' => true,
+        //     'taxonomies' => array('category'),
+        //  'show_in_rest' => true,
     );
     register_post_type("tutlayt_post", $args);
 }
 add_action('init', 'tutlayt_post_type');
 
 // Taxonomy: Category
-function tutlayt_categories_taxonomy() {
+function tutlayt_categories_taxonomy()
+{
     $args = array(
         'labels' => array(
             'menu_name'        => 'Tutlayt Kategoritin',
@@ -188,7 +190,7 @@ function tutlayt_categories_taxonomy() {
         'show_in_rest' => true,
         'show_admin_column' => true,
         'show_tagcloud' => true,
-//        'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+        //        'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
     );
     register_taxonomy("tutlayt_categories", array('tutlayt_page', ' tutlayt_post'), $args);
 }
@@ -219,7 +221,7 @@ function tutlayt_tags_taxonomy()
         'show_ui' => true,
         'show_in_rest' => true,
         'show_admin_column' => true,
-   //     'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+        //     'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
     );
     register_taxonomy("tutlayt-tag", array('tutlayt_page', 'tutlayt_post'), $args);
 }
@@ -238,22 +240,27 @@ add_action('after_setup_theme', 'register_navwalker');
 
 /* //////////////////// SHORCODES /////////////////// */
 
-function inid_azul() {
+function inid_azul()
+{
     $content = "Azul Fellawen akk !";
     return $content;
 }
 add_shortcode('aakkuc', 'inid_azul');
 
 
-function azul_wis_sin($atts) {
-    $a = shortcode_atts(array('nom' => 'valeur1',
-                              'mot' => 'valeur2'),
-                        $atts
-                        );
+function azul_wis_sin($atts)
+{
+    $a = shortcode_atts(
+        array(
+            'nom' => 'valeur1',
+            'mot' => 'valeur2'
+        ),
+        $atts
+    );
     $contenu = "<div>
                     <h2> Le Mot </h2>
-                    <p> Nom : ".$a['nom'].".</p>
-                    <p> Message : ".$a['mot'].".</p>
+                    <p> Nom : " . $a['nom'] . ".</p>
+                    <p> Message : " . $a['mot'] . ".</p>
                 </div";
     return $contenu;
 }
@@ -271,22 +278,22 @@ function azul_wis_qrad($atts)
         $atts
     );
     ob_start();
-    if($a['src'] == "") {
+    if ($a['src'] == "") {
 ?>
-        <div>
+        <div style="background-image: url(<?= $a['src'] ?>)">
             <h2> Le Mot </h2>
-            <p> Nom :   <?= $a['nom'] ?> </p>
+            <p> Nom : <?= $a['nom'] ?> </p>
             <p> Message : <?= $a['mot'] ?> </p>
         </div>";
 <?php
     } else {
 ?>
-        <div>
+        <div style="background-image: url(<?= $a['src'] ?>)">
             <h1> Les Mots </h1>
-            <p> Nom :   <?= $a['nom'] ?> </p>
+            <p> Nom : <?= $a['nom'] ?> </p>
             <p> Message : <?= $a['mot'] ?> </p>
-        </div";
-<?php
+            </div";
+                <?php
     }
     $contenu = ob_get_contents();
     ob_end_clean();
@@ -298,49 +305,47 @@ add_shortcode('awalsin', 'azul_wis_qrad');
 add_action("wp_ajax_enquire", "enquire_form");
 add_action("wp_ajax_nopriv_enquire", "enquire_form");
 
-function enquire_form() {
+function enquire_form()
+{
 
-    if( !wp_verify_nonce($_POST['nonce'], 'ajax_nonce') )   // Check if the nonce ('ajax_nonce') dont' matches with that sent
-    {
-        wp_send_json_error('Nonce is incorrect !', 401);
-        die();
+if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce'))   // Check if the nonce ('ajax_nonce') dont' matches with that sent
+{
+    wp_send_json_error('Nonce is incorrect !', 401);
+    die();
+}
+
+$formdata = [];
+
+wp_parse_str($_POST['enquire'], $formdata);
+
+// admin address
+$admin_email = get_option('admin_email');
+
+//email headers:
+$headers[] = 'Content-Type: text/html; charset=UTF-8';
+$headers[] = 'From:' . $admin_email;
+$headers[] = 'Replay-to:' . $formdata['email'];
+
+// Whom we are sending email to ?
+$send_to = $admin_email;
+
+//Subject
+$subject = "Enquiry from : " . $formdata['fname'] . ' ' . $formdata['lname'];
+
+//Message
+$message = '';
+foreach ($formdata as $index => $field) {
+    $message .= '<strong>' . $index . '</strong>: ' . $field . '<br />';
+}
+
+try {
+    if (wp_mail($send_to, $subject, $message, $headers)) {
+        wp_send_json_success('emial sent (:)');
+    } else {
+        wp_send_json_success('Email error');
     }
-
-    $formdata = [];
-
-    wp_parse_str($_POST['enquire'], $formdata);
-
-    // admin address
-    $admin_email = get_option('admin_email');
-
-    //email headers:
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From:' . $admin_email;
-    $headers[] = 'Replay-to:'.$formdata['email'];
-
-    // Whom we are sending email to ?
-    $send_to = $admin_email; 
-
-    //Subject
-    $subject = "Enquiry from : ". $formdata['fname'] .' '. $formdata['lname'];
-
-    //Message
-    $message = '';
-    foreach($formdata as $index => $field)
-    {
-        $message .= '<strong>'. $index.'</strong>: '. $field .'<br />';
-    }
-
-    try {
-        if(wp_mail($send_to, $subject, $message, $headers)) {
-            wp_send_json_success('emial sent (:)');
-        } else {
-
-            wp_send_json_success('Email error');
-        }
-    } catch (Exception $e) {
-
-        wp_send_json_error($e-getMessage());
+} catch (Exception $e) {
+        wp_send_json_error($e - getMessage());
     }
 
     wp_send_json_success($formdata['fname']);
