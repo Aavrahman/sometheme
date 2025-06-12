@@ -285,21 +285,62 @@ function azul_wis_qrad($atts)
             <p> Nom : <?= $a['nom'] ?> </p>
             <p> Message : <?= $a['mot'] ?> </p>
         </div>";
-<?php
+    <?php
     } else {
-?>
+    ?>
         <div style="background-image: url(<?= $a['src'] ?>)">
             <h1> Les Mots </h1>
             <p> Nom : <?= $a['nom'] ?> </p>
             <p> Message : <?= $a['mot'] ?> </p>
-            </div";
-                <?php
+        </div>
+    <?php
     }
     $contenu = ob_get_contents();
     ob_end_clean();
     return $contenu;
 }
-add_shortcode('awalsin', 'azul_wis_qrad');
+add_shortcode('awal_wis_sin', 'azul_wis_qrad');
+
+
+
+function azul_qus($atts, $content = null)
+{
+    $a = shortcode_atts(
+        array(
+            'src' => '',
+            'content' => $content,
+            'nom' => 'valeur1',
+            'mot' => 'valeur2'
+        ),
+        $atts
+    );
+//    $content = "<h1>".$content."</h1>";
+    ob_start();
+    if ($a['src'] == "") {
+    ?>
+        <div style="background-image: url(<?= $a['src'] ?>)">
+            <h1> Le Mot </h1>
+            <p style="background-color:yellow"> Contenu : <?= $a['content'] ?> </p>
+            <p> Nom : <?= $a['nom'] ?> </p>
+            <p> Message : <?= $a['mot'] ?> </p>
+        </div>
+    <?php
+    } else {
+    ?>
+        <div style="background-image: url(<?= $a['src'] ?>)">
+            <h1> Les Mots </h1>
+            <p style="background-color:yellow"> Contenu : <?= $a['content'] ?> </p>
+            <p> Nom : <?= $a['nom'] ?> </p>
+            <p> Message : <?= $a['mot'] ?> </p>
+        </div>
+<?php
+    }
+    $contenu = ob_get_contents();
+    ob_end_clean();
+    return $content = $contenu;
+//    return $content . $contenu;
+}
+add_shortcode('awalsin', 'azul_qus');
 
 /* //////////////////// FORMS /////////////////// */
 add_action("wp_ajax_enquire", "enquire_form");
@@ -308,43 +349,43 @@ add_action("wp_ajax_nopriv_enquire", "enquire_form");
 function enquire_form()
 {
 
-if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce'))   // Check if the nonce ('ajax_nonce') dont' matches with that sent
-{
-    wp_send_json_error('Nonce is incorrect !', 401);
-    die();
-}
-
-$formdata = [];
-
-wp_parse_str($_POST['enquire'], $formdata);
-
-// admin address
-$admin_email = get_option('admin_email');
-
-//email headers:
-$headers[] = 'Content-Type: text/html; charset=UTF-8';
-$headers[] = 'From:' . $admin_email;
-$headers[] = 'Replay-to:' . $formdata['email'];
-
-// Whom we are sending email to ?
-$send_to = $admin_email;
-
-//Subject
-$subject = "Enquiry from : " . $formdata['fname'] . ' ' . $formdata['lname'];
-
-//Message
-$message = '';
-foreach ($formdata as $index => $field) {
-    $message .= '<strong>' . $index . '</strong>: ' . $field . '<br />';
-}
-
-try {
-    if (wp_mail($send_to, $subject, $message, $headers)) {
-        wp_send_json_success('emial sent (:)');
-    } else {
-        wp_send_json_success('Email error');
+    if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce'))   // Check if the nonce ('ajax_nonce') dont' matches with that sent
+    {
+        wp_send_json_error('Nonce is incorrect !', 401);
+        die();
     }
-} catch (Exception $e) {
+
+    $formdata = [];
+
+    wp_parse_str($_POST['enquire'], $formdata);
+
+    // admin address
+    $admin_email = get_option('admin_email');
+
+    //email headers:
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'From:' . $admin_email;
+    $headers[] = 'Replay-to:' . $formdata['email'];
+
+    // Whom we are sending email to ?
+    $send_to = $admin_email;
+
+    //Subject
+    $subject = "Enquiry from : " . $formdata['fname'] . ' ' . $formdata['lname'];
+
+    //Message
+    $message = '';
+    foreach ($formdata as $index => $field) {
+        $message .= '<strong>' . $index . '</strong>: ' . $field . '<br />';
+    }
+
+    try {
+        if (wp_mail($send_to, $subject, $message, $headers)) {
+            wp_send_json_success('emial sent (:)');
+        } else {
+            wp_send_json_success('Email error');
+        }
+    } catch (Exception $e) {
         wp_send_json_error($e - getMessage());
     }
 
