@@ -2,14 +2,13 @@
 
 /* //////////////////// BOOTSTRAP /////////////////// */
 // BOOTSTRAP: Load CSS
-/*
+
 function load_css()
 {
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all'); // 'false' for version
     wp_enqueue_style('bootstrap');
 
-    wp_register_style('main', get_template_directory_uri() . '/css/main.css', array(), false, 'all');
-    wp_enqueue_style('main'); // Override the bootsrap rules
+    wp_enqueue_style('main', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'load_css');
 
@@ -18,22 +17,17 @@ function load_js()
 {
     wp_enqueue_script('jquery');
     wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', false, true);
-    wp_enqueue_style('bootstrap');
+    wp_enqueue_script('bootstrap');
 }
 add_action('wp_enqueue_scripts', 'load_js');
-*/
 
+/*
 function style_sheet()
 {
     wp_enqueue_style('style', get_stylesheet_uri());  //BOOTSTRAP IS NOW IMPORTED BY THE CSS FILE
 }
 add_action('wp_enqueue_scripts', 'style_sheet');
 
-
-/*  DESACTIVATED BECAUSE OF THE USE BOOTSTRAP HERE BELLOW
-function the_styles()  {
-    wp_enqueue_style('init', get_stylesheet_uri());
-}   */
 
 /* //////////////////// THEME OPTIONS /////////////////// */
 
